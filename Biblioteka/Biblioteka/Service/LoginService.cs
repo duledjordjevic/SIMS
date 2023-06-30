@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Biblioteka.Service
 {
@@ -17,9 +18,15 @@ namespace Biblioteka.Service
             _userAccountRepository = userAccountRepository; 
             //_mainViewModel = mainViewModel;
         }
-        public void Login(string username, string Password, MainViewModel mainViewModel)
+        public void Login(string email, string password, MainViewModel mainViewModel)
         {
-            
+            foreach(var account in _userAccountRepository.GetAll().Values)
+            {
+                if (account.Email == email && account.Password == password)
+                {
+                    MessageBox.Show("usaooo");
+                }
+            }
         }
 
         //private bool IsValidPassword(Person? user, string password)
