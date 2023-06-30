@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,13 +10,13 @@ namespace Biblioteka.Configuration
 {
     public class ResourceConfigurationJSON<T> : IResourceConfiguration<T>
     {
-        private string PatientJSON = @"..\..\..\Data\patient.json";
+        private string UserAccountJSON = @"..\..\..\Data\userAccount.json";
 
         public string GetResourcePath()
         {
             return typeof(T).Name switch
             {
-                //nameof(Patient) => PatientJSON,
+                nameof(UserAccount) => UserAccountJSON,
                 _ => string.Empty,
             };
         }

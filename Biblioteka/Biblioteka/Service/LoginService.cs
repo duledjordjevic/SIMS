@@ -11,9 +11,9 @@ namespace Biblioteka.Service
     public class LoginService : ILoginService
     {
         private readonly MainViewModel _mainViewModel;
-        public LoginService(MainViewModel mainViewModel) 
+        public LoginService() 
         { 
-            _mainViewModel = mainViewModel;
+            //_mainViewModel = mainViewModel;
         }
         public void Login(string username, string Password, MainViewModel mainViewModel)
         {
