@@ -1,19 +1,19 @@
 ﻿using Biblioteka.Model;
 using Biblioteka.Repository.Core;
 using Biblioteka.Repository.Interface;
+using Biblioteka.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblioteka.Repository
+namespace Biblioteka.Service
 {
-    public class UserAccountRepository : IUserAccountRepository
+    public class UserAccountService : IUserAccountService
     {
-        private ICRUDRepository<UserAccount> _repo;
-        public UserAccountRepository(ICRUDRepository<UserAccount> repo)
+        private IUserAccountRepository _repo;
+        public UserAccountService(IUserAccountRepository repo)
         {
             _repo = repo;
         }

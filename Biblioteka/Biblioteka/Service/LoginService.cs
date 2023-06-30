@@ -1,4 +1,5 @@
-﻿using Biblioteka.Service.Interface;
+﻿using Biblioteka.Repository.Interface;
+using Biblioteka.Service.Interface;
 using Biblioteka.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,10 @@ namespace Biblioteka.Service
 {
     public class LoginService : ILoginService
     {
-        private readonly MainViewModel _mainViewModel;
-        public LoginService() 
+        private readonly IUserAccountRepository _userAccountRepository;
+        public LoginService(IUserAccountRepository userAccountRepository) 
         { 
+            _userAccountRepository = userAccountRepository; 
             //_mainViewModel = mainViewModel;
         }
         public void Login(string username, string Password, MainViewModel mainViewModel)
