@@ -1,4 +1,7 @@
-﻿using Biblioteka.ViewModel;
+﻿using Autofac;
+using Biblioteka.Configuration;
+using Biblioteka.Service.Interface;
+using Biblioteka.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,7 +18,16 @@ namespace Biblioteka
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainWindow = new MainWindow()
+            var container = ContainerConfiguration.Configure();
+
+            ILoginService loginService;
+
+            using (var scope = container.BeginLifetimeScope())
+            {
+                loginService = scope.Resolve<ILoginService>();
+
+            }
+                MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel()
             };
