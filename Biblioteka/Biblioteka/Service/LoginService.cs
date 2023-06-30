@@ -24,7 +24,26 @@ namespace Biblioteka.Service
             {
                 if (account.Email == email && account.Password == password)
                 {
-                    MessageBox.Show("usaooo");
+                    if (account.AccountType == Enums.AccountType.ADMIN)
+                    {
+                        mainViewModel.CurrentViewModel = new AdminViewModel();
+                    }
+                    else if (account.AccountType == Enums.AccountType.LIBRARIAN)
+                    {
+
+                    }
+                    else if (account.AccountType == Enums.AccountType.SPECIAL_LIBRARIAN)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lose uneti podaci");
                 }
             }
         }

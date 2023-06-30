@@ -2,6 +2,7 @@
   "1": {
     "Id": 1,
     "Email": "dusan@gmail.com",
-    "Password" :  "123"
+    "Password": "123",
+    "AccountType" :  0
   }
 }

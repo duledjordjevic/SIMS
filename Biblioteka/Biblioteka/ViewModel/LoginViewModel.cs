@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Biblioteka.Command;
+using Biblioteka.Service.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,10 +43,10 @@ namespace Biblioteka.ViewModel
 
         private readonly MainViewModel _mainViewModel;
         public MainViewModel MainViewModel => _mainViewModel;
-        public LoginViewModel(MainViewModel mainViewModel)
+        public LoginViewModel(MainViewModel mainViewModel, ILoginService loginService) 
         {
             _mainViewModel = mainViewModel;
-            //SubmitCommand = new LoginCommand(this, mainViewModel, login);
+            SubmitCommand = new LoginCommand(this, mainViewModel, loginService);
 
         }
     }

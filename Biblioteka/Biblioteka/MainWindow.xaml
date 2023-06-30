@@ -10,24 +10,12 @@
         Title="MainWindow" Height="850" Width="800">
     <Grid>
         <Grid.Resources>
-            <!--<DataTemplate DataType="{x:Type vm:LoginViewModel}">
-                <view:LoginView />
-            </DataTemplate>-->
             <DataTemplate DataType="{x:Type vm:LoginViewModel}">
                 <view:LoginView />
             </DataTemplate>
-            <!--<DataTemplate DataType="{x:Type vms:DirectorViewModel}">
-                <view:DirectorView />
+            <DataTemplate DataType="{x:Type vm:AdminViewModel}">
+                <view:AdminView />
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vmstable:PatientTableViewModel}">
-                <view:NurseControl />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:DoctorMainViewModel}">
-                <view:DoctorView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:PatientMainViewModel}">
-                <view:PatientMainView />
-            </DataTemplate>-->
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>

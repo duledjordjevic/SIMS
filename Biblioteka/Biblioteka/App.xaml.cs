@@ -29,7 +29,7 @@ namespace Biblioteka
             }
                 MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(loginService)
             };
             MainWindow.Show();
             base.OnStartup(e);
