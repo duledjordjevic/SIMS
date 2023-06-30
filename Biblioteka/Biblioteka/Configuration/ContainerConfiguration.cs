@@ -20,10 +20,6 @@ namespace Biblioteka.Configuration
             var builder = new ContainerBuilder();
 
             builder.RegisterType<LoginService>().As<ILoginService>();
-            //builder.RegisterType<PatientService>().As<IPatientService>();
-            //builder.RegisterType<CRUDRepository<Patient>>().As<ICRUDRepository<Patient>>();
-            //builder.RegisterType<SerializerJSON<Patient>>().As<ISerializer<Patient>>();
-            //builder.RegisterType<ResourceConfigurationJSON<Patient>>().As<IResourceConfiguration<Patient>>();
 
 
             builder.RegisterType<UserAccountService>().As<IUserAccountService>();
@@ -31,6 +27,14 @@ namespace Biblioteka.Configuration
             builder.RegisterType<CRUDRepository<UserAccount>>().As<ICRUDRepository<UserAccount>>();
             builder.RegisterType<SerializerJSON<UserAccount>>().As<ISerializer<UserAccount>>();
             builder.RegisterType<ResourceConfigurationJSON<UserAccount>>().As<IResourceConfiguration<UserAccount>>();
+
+            builder.RegisterType<MemberService>().As<IMemberService>();
+            builder.RegisterType<MemberRepository>().As<IMemberRepository>();
+            builder.RegisterType<CRUDRepository<Member>>().As<ICRUDRepository<Member>>();
+            builder.RegisterType<SerializerJSON<Member>>().As<ISerializer<Member>>();
+            builder.RegisterType<ResourceConfigurationJSON<Member>>().As<IResourceConfiguration<Member>>();
+
+
             return builder.Build();
         }
     }

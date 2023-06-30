@@ -12,18 +12,20 @@ namespace Biblioteka.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
-        public int Jmbg { get; set; }
-        public int Telephone { get; set; }
+        public string Jmbg { get; set; }
+        public string Telephone { get; set; }
         public int UserAccountId { get; set; }
         public MemberCard MemberCard { get; set; }
+        public Address Adress { get; set; }
         public Member() { }
-        public Member(string name, string lastName, int jmbg, int telephone, MemberCard memberCard)
+        public Member(string name, string lastName, string jmbg, string telephone, MemberCard memberCard, Address adress)
         {
             Name = name;
             LastName = lastName;
             Jmbg = jmbg;
             Telephone = telephone;
             MemberCard = memberCard;
+            Adress = adress;
         }
     }
 }

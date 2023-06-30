@@ -19,9 +19,6 @@
             <DataTemplate DataType="{x:Type vm:LibrarianViewModel}">
                 <view:LibrarianView />
             </DataTemplate>
-            <!--<DataTemplate DataType="{x:Type vm:SpecialLibrarianViewModel}">
-                <view:SpecialLibrarianView />
-            </DataTemplate>-->
             <DataTemplate DataType="{x:Type vm:SpecialLibrarianViewModel}">
                 <view:SpeicalLibrarianView />
             </DataTemplate>

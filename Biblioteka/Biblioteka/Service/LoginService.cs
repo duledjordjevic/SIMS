@@ -12,15 +12,16 @@ namespace Biblioteka.Service
 {
     public class LoginService : ILoginService
     {
-        private readonly IUserAccountRepository _userAccountRepository;
-        public LoginService(IUserAccountRepository userAccountRepository) 
-        { 
-            _userAccountRepository = userAccountRepository; 
-            //_mainViewModel = mainViewModel;
+        private readonly IUserAccountService _userAccountService;
+        private readonly IMemberService _memberService;
+        public LoginService(IUserAccountService userAccountService, IMemberService memberService) 
+        {
+            _userAccountService = userAccountService;
+            _memberService = memberService;
         }
         public void Login(string email, string password, MainViewModel mainViewModel)
         {
-            foreach(var account in _userAccountRepository.GetAll().Values)
+            foreach(var account in _userAccountService.GetAll().Values)
             {
                 if (account.Email == email && account.Password == password)
                 {
@@ -39,6 +40,7 @@ namespace Biblioteka.Service
                     else
                     {
                         mainViewModel.CurrentViewModel = new MemberViewModel();
+                        MessageBox.Show(_memberService.GetByAccountId(account.Id).Adress.City);
                     }
                 }
                 else
