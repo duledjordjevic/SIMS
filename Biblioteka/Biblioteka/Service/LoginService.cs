@@ -38,7 +38,7 @@ namespace Biblioteka.Service
                     }
                     else
                     {
-
+                        mainViewModel.CurrentViewModel = new MemberViewModel();
                     }
                 }
                 else
