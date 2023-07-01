@@ -93,7 +93,46 @@ namespace Biblioteka.ViewModel.Dialog
 				OnPropertyChanged(nameof(Password));
 			}
 		}
-        public ObservableCollection<MembershipType> MembershipTypes { get; set; }
+		private string _street;
+		public string Street
+		{
+			get
+			{
+				return _street;
+			}
+			set
+			{
+				_street = value;
+				OnPropertyChanged(nameof(Street));
+			}
+		}
+		private string _city;
+		public string City
+		{
+			get
+			{
+				return _city;
+			}
+			set
+			{
+				_city = value;
+				OnPropertyChanged(nameof(City));
+			}
+		}
+		private int _postalCode;
+		public int PostalCode
+		{
+			get
+			{
+				return _postalCode;
+			}
+			set
+			{
+				_postalCode = value;
+				OnPropertyChanged(nameof(PostalCode));
+			}
+		}
+		public ObservableCollection<MembershipType> MembershipTypes { get; set; }
         private MembershipType _selectedMembershipType;
 		public MembershipType SelectedMembershipType
 		{

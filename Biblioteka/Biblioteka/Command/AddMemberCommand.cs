@@ -29,7 +29,10 @@ namespace Biblioteka.Command
                     !(_addMemberDialogViewModel.Jmbg == null) &&
                     !(_addMemberDialogViewModel.Telephone == null) &&
                     !(_addMemberDialogViewModel.Email == null) &&
-                    !(_addMemberDialogViewModel.Password == null));
+                    !(_addMemberDialogViewModel.Password == null) &&
+                    !(_addMemberDialogViewModel.Street == null) &&
+                    !(_addMemberDialogViewModel.City == null) &&
+                    !(_addMemberDialogViewModel.PostalCode != 0));
         }
 
         public override void Execute(object? parameter)
@@ -44,7 +47,10 @@ namespace Biblioteka.Command
                 || e.PropertyName == nameof(_addMemberDialogViewModel.Jmbg)
                 || e.PropertyName == nameof(_addMemberDialogViewModel.Telephone)
                 || e.PropertyName == nameof(_addMemberDialogViewModel.Email)
-                || e.PropertyName == nameof(_addMemberDialogViewModel.Password))
+                || e.PropertyName == nameof(_addMemberDialogViewModel.Password)
+                || e.PropertyName == nameof(_addMemberDialogViewModel.Street)
+                || e.PropertyName == nameof(_addMemberDialogViewModel.City)
+                || e.PropertyName == nameof(_addMemberDialogViewModel.PostalCode))
             {
                 OnCanExecutedChanged();
             }
