@@ -27,7 +27,7 @@ namespace Biblioteka.Service
                 {
                     if (account.AccountType == Enums.AccountType.ADMIN)
                     {
-                        mainViewModel.CurrentViewModel = new AdminViewModel();
+                        mainViewModel.CurrentViewModel = new AdminViewModel(_userAccountService);
                     }
                     else if (account.AccountType == Enums.AccountType.LIBRARIAN)
                     {

@@ -1,4 +1,7 @@
 ﻿using Biblioteka.Command;
+using Biblioteka.Service.Interface;
+using Biblioteka.View.Table;
+using Biblioteka.ViewModel.Table;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +14,10 @@ namespace Biblioteka.ViewModel
     public class AdminViewModel : ViewModelBase
     {
         public ICommand OpenAddLibrarianCommand { get; }
-        public AdminViewModel()
+        private IUserAccountService _userAccountService;
+        public AdminViewModel(IUserAccountService userAccountService)
         {
+            _userAccountService = userAccountService;
             OpenAddLibrarianCommand = new RelayCommand(OpenAddLibrarian, CanClick);
         }
 
@@ -23,9 +28,9 @@ namespace Biblioteka.ViewModel
 
         public void OpenAddLibrarian()
         {
-            //var patientAppointments = new PatientAppoinmentsView();
-            //patientAppointments.DataContext = new PatientAppointmentTableViewModel(_patient, _schedulingService, _appointmentService, _doctorScheduleService, _patientService, _doctorService);
-            //patientAppointments.ShowDialog();
+            var librarianTableView = new LibrarianTableView();
+            librarianTableView.DataContext = new LibrarianTableViewModel(_userAccountService);
+            librarianTableView.Show();
         }
     }
 }
