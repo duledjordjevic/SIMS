@@ -2,6 +2,7 @@
 using Biblioteka.Enums;
 using Biblioteka.Service;
 using Biblioteka.Service.Interface;
+using Biblioteka.ViewModel.Table;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -146,15 +147,17 @@ namespace Biblioteka.ViewModel.Dialog
 				OnPropertyChanged(nameof(MembershipType));
 			}
 		}
-
 		public CommandBase AddMemberCommand { get; }
 
         public ICommand CloseCommand { get; }
-		public AddMemberDialogViewModel(Window window, IUserAccountService userAccountService, IMemberService memberService)
+		private MembersTableViewModel _membersTableViewModel;
+
+        public AddMemberDialogViewModel(Window window, MembersTableViewModel membersTableViewModel, IUserAccountService userAccountService, IMemberService memberService, IPaymentService paymentService)
 		{
+			_membersTableViewModel = membersTableViewModel;
             var membershipTypes = Enum.GetValues(typeof(MembershipType)).Cast<MembershipType>().ToList();
             MembershipTypes = new ObservableCollection<MembershipType>(membershipTypes);
-			AddMemberCommand = new AddMemberCommand(this, userAccountService, memberService);
+			AddMemberCommand = new AddMemberCommand(this, userAccountService, memberService, paymentService);
             AddMemberCommand.ExcecutionCompleted += AddMemberExecutionCompleted;
             CloseCommand = new CloseCommand(window);
         }
@@ -164,8 +167,12 @@ namespace Biblioteka.ViewModel.Dialog
             if (e.IsSuccessfull)
             {
                 MessageBox.Show(e.Message, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-                //_patientNotificationTableViewModel.LoadNotifications();
+                _membersTableViewModel.LoadMembers();
                 CloseCommand.Execute(this);
+			}
+			else
+			{
+                MessageBox.Show(e.Message, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

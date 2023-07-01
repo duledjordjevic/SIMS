@@ -12,12 +12,14 @@ namespace Biblioteka.Configuration
     {
         private string UserAccountJSON = @"..\..\..\Data\userAccount.json";
         private string MemberJSON = @"..\..\..\Data\member.json";
+        private string PaymentJSON = @"..\..\..\Data\payment.json";
         public string GetResourcePath()
         {
             return typeof(T).Name switch
             {
                 nameof(UserAccount) => UserAccountJSON,
                 nameof(Member) => MemberJSON,
+                nameof(Payment) => PaymentJSON,
                 _ => string.Empty,
             };
         }

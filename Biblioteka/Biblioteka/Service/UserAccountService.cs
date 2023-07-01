@@ -1,4 +1,5 @@
-﻿using Biblioteka.Model;
+﻿using Biblioteka.Enums;
+using Biblioteka.Model;
 using Biblioteka.Repository.Core;
 using Biblioteka.Repository.Interface;
 using Biblioteka.Service.Interface;
@@ -52,6 +53,15 @@ namespace Biblioteka.Service
         public bool IsEmailValid(string email)
         {
             return Regex.IsMatch(email, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+        }
+
+        public UserAccount GetByEmail(string email)
+        {
+            return GetAll().Values.First(account => email == account.Email);
+        }
+        public void Add(string email, string password, AccountType accountType)
+        {
+            _repo.Add(new UserAccount(email, password, accountType));
         }
     }
 }

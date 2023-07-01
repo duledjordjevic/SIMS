@@ -14,14 +14,15 @@ namespace Biblioteka.Model
         public PaymentType PaymentType { get; set ; }
         public double Amount { get; set ; }
         public DateTime Date;
-
+        public int MemberAccountId;
         public Payment(){}
 
-        public Payment(PaymentType paymentType, double amount, DateTime date)
+        public Payment(PaymentType paymentType, double amount, DateTime date, int memberAccountId)
         {
             PaymentType = paymentType;
             Amount = amount;
             Date = date;
+            MemberAccountId = memberAccountId;
         }
     }
 }

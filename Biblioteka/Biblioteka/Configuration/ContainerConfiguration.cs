@@ -34,6 +34,11 @@ namespace Biblioteka.Configuration
             builder.RegisterType<SerializerJSON<Member>>().As<ISerializer<Member>>();
             builder.RegisterType<ResourceConfigurationJSON<Member>>().As<IResourceConfiguration<Member>>();
 
+            builder.RegisterType<PaymentService>().As<IPaymentService>();
+            builder.RegisterType<PaymentRepository>().As<IPaymentRepository>();
+            builder.RegisterType<CRUDRepository<Payment>>().As<ICRUDRepository<Payment>>();
+            builder.RegisterType<SerializerJSON<Payment>>().As<ISerializer<Payment>>();
+            builder.RegisterType<ResourceConfigurationJSON<Payment>>().As<IResourceConfiguration<Payment>>();
 
             return builder.Build();
         }

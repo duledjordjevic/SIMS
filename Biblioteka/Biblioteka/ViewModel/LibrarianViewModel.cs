@@ -17,11 +17,13 @@ namespace Biblioteka.ViewModel
         public ICommand OpenMembersCommand { get; }
         private IMemberService _memberService;
         private IUserAccountService _userAccountService;
-        public LibrarianViewModel(IMemberService memberService, IUserAccountService userAccountService)
+        private IPaymentService _paymentService;
+        public LibrarianViewModel(IMemberService memberService, IUserAccountService userAccountService, IPaymentService paymentService)
         {
             _memberService = memberService;
             _userAccountService = userAccountService;
             OpenMembersCommand = new RelayCommand(OpenMembers, CanClick);
+            _paymentService = paymentService;
         }
 
         public bool CanClick()
@@ -32,7 +34,7 @@ namespace Biblioteka.ViewModel
         public void OpenMembers()
         {
             var membersView = new MembersTableView();
-            membersView.DataContext = new MembersTableViewModel(membersView, _userAccountService,_memberService);
+            membersView.DataContext = new MembersTableViewModel(membersView, _userAccountService,_memberService, _paymentService);
             membersView.ShowDialog();
         }
     }

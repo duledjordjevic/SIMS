@@ -1,10 +1,11 @@
-﻿{
+{
   "1": {
     "Id": 1,
     "Name": "Dusan",
     "LastName": "Djordjevic",
     "Jmbg": "1234567891234",
     "Telephone": "0456384983",
+    "MembershipType": 1,
     "UserAccountId": 1,
     "MemberCard": {
       "Expiry": "2024-05-30"
@@ -13,7 +14,6 @@
       "Street": "Banovic Strahinje 8",
       "City": "Novi Sad",
       "PostalCode": 21000
-    },
-    "MembershipType" :  1
+    }
   }
 }

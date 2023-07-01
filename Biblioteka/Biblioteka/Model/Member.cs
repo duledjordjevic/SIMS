@@ -20,7 +20,7 @@ namespace Biblioteka.Model
         public MemberCard MemberCard { get; set; }
         public Address Adress { get; set; }
         public Member() { }
-        public Member(string name, string lastName, string jmbg, string telephone, MemberCard memberCard, Address adress, MembershipType membershipType)
+        public Member(string name, string lastName, string jmbg, string telephone, MemberCard memberCard, Address adress, MembershipType membershipType, int userAccountId)
         {
             Name = name;
             LastName = lastName;
@@ -29,6 +29,7 @@ namespace Biblioteka.Model
             MemberCard = memberCard;
             Adress = adress;
             MembershipType = membershipType;
+            UserAccountId = userAccountId;
         }
     }
 }

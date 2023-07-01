@@ -37,7 +37,8 @@ namespace Biblioteka.ViewModel.Table
         private IUserAccountService _userAccountService;
         public ICommand OpenAddMemberCommand { get; }
         public ICommand CloseCommand { get; }
-        public MembersTableViewModel(Window window, IUserAccountService userAccountService, IMemberService memberService)
+        private IPaymentService _paymentService;
+        public MembersTableViewModel(Window window, IUserAccountService userAccountService, IMemberService memberService, IPaymentService paymentService)
         {
             _memberService = memberService;
             _userAccountService = userAccountService;
@@ -45,16 +46,17 @@ namespace Biblioteka.ViewModel.Table
             LoadMembers();
             OpenAddMemberCommand = new RelayCommand(OpenAddMember);
             CloseCommand = new CloseCommand(window);
+            _paymentService = paymentService;
         }
 
         private void OpenAddMember()
         {
             var addMemberDialogView = new AddMemberDialogView();
-            addMemberDialogView.DataContext = new AddMemberDialogViewModel(addMemberDialogView, _userAccountService, _memberService);
+            addMemberDialogView.DataContext = new AddMemberDialogViewModel(addMemberDialogView,this, _userAccountService, _memberService, _paymentService);
             addMemberDialogView.ShowDialog();
         }
 
-        private void LoadMembers()
+        public void LoadMembers()
         {
             _members.Clear();
             foreach(var member in _memberService.GetAll().Values)
