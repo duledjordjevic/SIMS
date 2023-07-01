@@ -12,5 +12,6 @@ namespace Biblioteka.Service
         void Remove(int id);
         void Update(Member member);
         Member? GetByAccountId(int id);
+        bool CheckMemberExistenceJmbg(string jmbg);
     }
 }

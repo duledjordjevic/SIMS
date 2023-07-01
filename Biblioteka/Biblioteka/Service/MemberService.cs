@@ -55,5 +55,10 @@ namespace Biblioteka.Service
             return GetAll().Values.FirstOrDefault(member => member.UserAccountId == id);
         }
 
+        public bool CheckMemberExistenceJmbg(string jmbg)
+        {
+            return GetAll().Values.Any(member => jmbg == member.Jmbg);
+        }
+
     }
 }
