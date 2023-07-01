@@ -42,5 +42,10 @@ namespace Biblioteka.Service
         {
             return _repo.GetAll();
         }
+
+        public bool CheckUserExistanceEmail(string email)
+        {
+            return GetAll().Values.Any(account => email == account.Email);
+        }
     }
 }
