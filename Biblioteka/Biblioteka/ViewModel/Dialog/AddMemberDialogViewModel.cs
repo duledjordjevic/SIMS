@@ -115,8 +115,20 @@ namespace Biblioteka.ViewModel.Dialog
 		{
             var membershipTypes = Enum.GetValues(typeof(MembershipType)).Cast<MembershipType>().ToList();
             MembershipTypes = new ObservableCollection<MembershipType>(membershipTypes);
+			AddMemberCommand = new AddMemberCommand(this, userAccountService, memberService);
+            AddMemberCommand.ExcecutionCompleted += AddMemberExecutionCompleted;
             CloseCommand = new CloseCommand(window);
-		}
+        }
 
-	}
+        private void AddMemberExecutionCompleted(object? sender, ExecutionCompletedEventArgs e)
+        {
+            if (e.IsSuccessfull)
+            {
+                MessageBox.Show(e.Message, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                //_patientNotificationTableViewModel.LoadNotifications();
+                CloseCommand.Execute(this);
+            }
+        }
+
+    }
 }
