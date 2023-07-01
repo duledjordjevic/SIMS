@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Biblioteka.Service
@@ -46,6 +47,11 @@ namespace Biblioteka.Service
         public bool CheckUserExistanceEmail(string email)
         {
             return GetAll().Values.Any(account => email == account.Email);
+        }
+
+        public bool IsEmailValid(string email)
+        {
+            return Regex.IsMatch(email, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
         }
     }
 }

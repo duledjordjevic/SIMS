@@ -10,6 +10,7 @@ namespace Biblioteka.Service.Interface
         Dictionary<int, UserAccount> GetAll();
         void Remove(int id);
         void Update(UserAccount account);
-        bool checkUserExistanceEmail(string email);
+        bool CheckUserExistanceEmail(string email);
+        bool IsEmailValid(string email);
     }
 }
