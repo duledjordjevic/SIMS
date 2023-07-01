@@ -13,6 +13,7 @@
       "Street": "Banovic Strahinje 8",
       "City": "Novi Sad",
       "PostalCode": 21000
-    }
+    },
+    "MembershipType" :  1
   }
 }

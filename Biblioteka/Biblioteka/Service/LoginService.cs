@@ -31,7 +31,7 @@ namespace Biblioteka.Service
                     }
                     else if (account.AccountType == Enums.AccountType.LIBRARIAN)
                     {
-                        mainViewModel.CurrentViewModel = new LibrarianViewModel(_memberService);
+                        mainViewModel.CurrentViewModel = new LibrarianViewModel(_memberService, _userAccountService);
                     }
                     else if (account.AccountType == Enums.AccountType.SPECIAL_LIBRARIAN)
                     {

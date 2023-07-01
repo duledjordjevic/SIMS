@@ -159,7 +159,7 @@
                 Text="Tip clanarine: "
                 VerticalAlignment="Center"
                 />
-            <ComboBox Width="150" Height="20" Grid.Column="1" Margin="10,0,10,0" ItemsSource="{Binding MembershipType}" SelectedItem="{Binding SelectedMembershipType}"/>
+            <ComboBox Width="150" Height="20" Grid.Column="1" Margin="10,0,10,0" ItemsSource="{Binding MembershipTypes}" SelectedItem="{Binding SelectedMembershipType}"/>
 
         </Grid>
 

@@ -1,5 +1,6 @@
 ﻿using Biblioteka.Command;
 using Biblioteka.Service;
+using Biblioteka.Service.Interface;
 using Biblioteka.View.Table;
 using Biblioteka.ViewModel.Table;
 using System;
@@ -15,9 +16,11 @@ namespace Biblioteka.ViewModel
     {
         public ICommand OpenMembersCommand { get; }
         private IMemberService _memberService;
-        public LibrarianViewModel(IMemberService memberService)
+        private IUserAccountService _userAccountService;
+        public LibrarianViewModel(IMemberService memberService, IUserAccountService userAccountService)
         {
             _memberService = memberService;
+            _userAccountService = userAccountService;
             OpenMembersCommand = new RelayCommand(OpenMembers, CanClick);
         }
 
@@ -29,7 +32,7 @@ namespace Biblioteka.ViewModel
         public void OpenMembers()
         {
             var membersView = new MembersTableView();
-            membersView.DataContext = new MembersTableViewModel(membersView, _memberService);
+            membersView.DataContext = new MembersTableViewModel(membersView, _userAccountService,_memberService);
             membersView.ShowDialog();
         }
     }

@@ -1,4 +1,5 @@
-﻿using Biblioteka.Repository.Core;
+﻿using Biblioteka.Enums;
+using Biblioteka.Repository.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,12 @@ namespace Biblioteka.Model
         public string LastName { get; set; }
         public string Jmbg { get; set; }
         public string Telephone { get; set; }
+        public MembershipType MembershipType { get; set; }
         public int UserAccountId { get; set; }
         public MemberCard MemberCard { get; set; }
         public Address Adress { get; set; }
         public Member() { }
-        public Member(string name, string lastName, string jmbg, string telephone, MemberCard memberCard, Address adress)
+        public Member(string name, string lastName, string jmbg, string telephone, MemberCard memberCard, Address adress, MembershipType membershipType)
         {
             Name = name;
             LastName = lastName;
@@ -26,6 +28,7 @@ namespace Biblioteka.Model
             Telephone = telephone;
             MemberCard = memberCard;
             Adress = adress;
+            MembershipType = membershipType;
         }
     }
 }
