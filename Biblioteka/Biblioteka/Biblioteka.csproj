@@ -14,9 +14,7 @@
 
   <ItemGroup>
     <Folder Include="ViewModel\Dialog\" />
-    <Folder Include="ViewModel\Table\" />
     <Folder Include="View\Dialog\" />
-    <Folder Include="View\Table\" />
   </ItemGroup>
 
 </Project>

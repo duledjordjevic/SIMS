@@ -88,14 +88,14 @@
                 Padding="7"
                 Content="Dodaj"
                 Background="#fff"
-                Command="{Binding CreateAppointmentCommand}"/>
+                Command="{Binding OpenAddMemberCommand}"/>
             <Button 
                 Grid.Column="2"
                 Margin="250 10 10 10"
                 Padding="7"
-                Content="Otkazi"
+                Content="Izadji"
                 Background="#fff"
-                Command="{Binding CancelCommand}"/>
+                Command="{Binding CloseCommand}"/>
         </Grid>
     </Grid>
 </Window>
