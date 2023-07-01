@@ -1,8 +1,8 @@
-﻿{
+{
   "1": {
     "Id": 1,
     "Email": "dusan@gmail.com",
     "Password": "123",
-    "AccountType": 3
+    "AccountType": 0
   }
 }
