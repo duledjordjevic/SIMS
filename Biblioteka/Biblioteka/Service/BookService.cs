@@ -1,4 +1,5 @@
-﻿using Biblioteka.Model;
+﻿using Biblioteka.Enums;
+using Biblioteka.Model;
 using Biblioteka.Repository;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,9 @@ namespace Biblioteka.Service
         }
 
 
-        public void AddBook()
+        public void AddBook(string title, string description, string language, BookCoverType bookCoverType, string format, string isbn, string udk, int publicationYear, List<int> authors, int publisherId, List<BookCopy> bookCopies)
         {
-
+            _bookTitleRepository.Add(new BookTitle(title, description, language, bookCoverType, format, isbn, udk, publicationYear, authors, publisherId, bookCopies));
         }
 
         public void AddAuthor(string name, string lastName)
@@ -56,5 +57,12 @@ namespace Biblioteka.Service
         {
             return _publisherRepository.GetAll();
         }
+
+        public bool ExistOfBook(string isbn, string udk)
+        {
+            return _bookTitleRepository.GetAll().Values.Any(book => book.ISBN == isbn && book.UDK == udk);
+        }
+
+
     }
 }

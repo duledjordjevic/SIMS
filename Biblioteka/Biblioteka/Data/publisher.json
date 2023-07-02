@@ -1,1 +1,14 @@
-﻿{}
+{
+  "1": {
+    "Id": 1,
+    "Name": "Laguna",
+    "HeadOffice": "Beograd",
+    "BookTitles": null
+  },
+  "2": {
+    "Id": 2,
+    "Name": "Politika",
+    "HeadOffice": "Beograd",
+    "BookTitles": null
+  }
+}

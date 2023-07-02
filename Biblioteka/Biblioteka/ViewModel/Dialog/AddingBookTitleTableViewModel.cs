@@ -69,7 +69,7 @@ namespace Biblioteka.ViewModel.Dialog
 				OnPropertyChanged(nameof(Format));
 			}
 		}
-		public ObservableCollection<BookCoverType> BookCoverTypes;
+		public ObservableCollection<BookCoverType> BookCoverTypes { get; }
         private BookCoverType _selectedBookCoverType;
 		public BookCoverType SelectedBookCoverType
         {
@@ -174,7 +174,46 @@ namespace Biblioteka.ViewModel.Dialog
 				OnPropertyChanged(nameof(Publishers));
 			}
 		}
-
+		private Publisher _selectedPublisher;
+		public Publisher SelectedPublisher
+		{
+			get
+			{
+				return _selectedPublisher;
+			}
+			set
+			{
+				_selectedPublisher = value;
+				OnPropertyChanged(nameof(SelectedPublisher));
+			}
+		}
+		private string _publisherName;
+		public string PublisherName
+        {
+			get
+			{
+				return _publisherName;
+			}
+			set
+			{
+				_publisherName = value;
+				OnPropertyChanged(nameof(PublisherName));
+			}
+		}
+		private string _publisherHeadOffice;
+		public string PublisherHeadOffice
+        {
+			get
+			{
+				return _publisherHeadOffice;
+			}
+			set
+			{
+				_publisherHeadOffice = value;
+				OnPropertyChanged(nameof(PublisherHeadOffice));
+			}
+		}
+		public ICommand AddPublisherCommand { get; }
 		public ICommand AddAuthorCommand { get; }
 		public ICommand AddBookCommand { get; }
         public ICommand CloseCommand { get; }
@@ -186,6 +225,11 @@ namespace Biblioteka.ViewModel.Dialog
 			Publishers = new ObservableCollection<Publisher>();
 			LoadAuthors();
 			LoadPublishers();
+            var bookCoverTypes = Enum.GetValues(typeof(BookCoverType)).Cast<BookCoverType>().ToList();
+            BookCoverTypes = new ObservableCollection<BookCoverType>(bookCoverTypes);
+            AddAuthorCommand = new RelayCommand(AddAuthor, CanAddAuthor);
+			AddPublisherCommand = new RelayCommand(AddPublisher, CanAddPublisher);
+			AddBookCommand = new RelayCommand(AddBook, CanAddBook);
 			CloseCommand = new CloseCommand(window);
         }
 
@@ -206,5 +250,85 @@ namespace Biblioteka.ViewModel.Dialog
                 Publishers.Add(publisher);
             }
         }
+
+		public bool CanAddAuthor()
+		{
+			return (AuthorName is not null) && 
+				(AuthorLastName is not null) ;
+
+        }
+		public void AddAuthor()
+		{
+			if(!(_bookService.ExistOfAuthor(AuthorName, AuthorLastName)))
+			{
+				_bookService.AddAuthor(AuthorName, AuthorLastName);
+				MessageBox.Show("Uspesno ste dodali autora.");
+				AuthorName = "";
+				AuthorLastName = "";
+				LoadAuthors();
+			}
+			else
+			{
+				MessageBox.Show("Ovaj autor vec postoji");
+			}
+		}
+
+		public bool CanAddPublisher()
+		{
+			return (PublisherName is not null) &&
+				   (PublisherHeadOffice is not null);
+		}
+		public void AddPublisher()
+		{
+			if (!(_bookService.ExistOfPublisher(PublisherName, PublisherHeadOffice)))
+			{
+				_bookService.AddPublisher(PublisherName, PublisherHeadOffice);
+				MessageBox.Show("Uspesno ste dodali izdavaca.");
+				PublisherName = "";
+				PublisherHeadOffice = "";
+				LoadPublishers();
+			}
+			else
+			{
+				MessageBox.Show("Ovaj izdavac vec postoji");
+			}
+        }
+
+		public bool CanAddBook()
+		{
+			return (Title is not null) &&
+					(Language is not null) &&
+					(Format is not null) &&
+					(Description is not null) &&
+					(ISBN is not null) &&
+					(UDK is not null) &&
+					(PublicationYear != 0);
+		}
+		public void AddBook()
+		{
+			if(!(_bookService.ExistOfBook(ISBN, UDK)))
+			{
+				var selectedAuthors = new List<int>();
+				foreach(var author in Authors)
+				{
+					if (author.IsSelected) selectedAuthors.Add(author.Author.Id);
+				}
+				if (selectedAuthors.Count > 0)
+				{
+					_bookService.AddBook(Title, Description, Language, SelectedBookCoverType, Format, ISBN, UDK, PublicationYear, selectedAuthors, SelectedPublisher.Id, null);
+					MessageBox.Show("Uspesno ste dodali knjigu.");
+					CloseCommand.Execute(this);
+				}
+				else
+				{
+					MessageBox.Show("Morate odabrati bar jednog autora za knjigu");
+				}
+			}
+			else
+			{
+				MessageBox.Show("Knjiga sa ovim ISBN i UDK brojem vec postoji");
+			}
+		}
+
     }
 }

@@ -1,1 +1,18 @@
-﻿{}
+{
+  "1": {
+    "Id": 1,
+    "Title": "sdf",
+    "Description": "sdf",
+    "Language": "sdf",
+    "BookCoverType": 0,
+    "Format": "sdf",
+    "ISBN": "sdf",
+    "UDK": "sdf",
+    "PublicationYear": 212,
+    "Authors": [
+      0
+    ],
+    "PublisherId": 2,
+    "BookCopies": null
+  }
+}

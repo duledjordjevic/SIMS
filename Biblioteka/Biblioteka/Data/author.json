@@ -1,7 +1,8 @@
-﻿{
+{
   "1": {
+    "Id": 0,
     "Name": "Stevan",
     "LastName": "Sremac",
-    "BookTitles" :  null
+    "BookTitles": null
   }
 }
