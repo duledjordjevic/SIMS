@@ -1,0 +1,115 @@
+﻿<Window x:Class="Biblioteka.View.Table.BookTableView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteka.View.Table"
+        mc:Ignorable="d"
+        Title="BookTableView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock 
+                Grid.Column="0"
+                FontSize="30"
+                Text="Knjige"
+                Style="{StaticResource Header}"/>
+        </Grid>
+
+        <ListView Grid.Row="1" Margin="40 15 20 0" 
+                      HorizontalAlignment ="Left"
+                      ItemsSource="{Binding BookTitles}"
+                      SelectedItem="{Binding SelectedBookTitle}"
+                  
+                      SelectionMode="Single" RenderTransformOrigin="0.51,0.6">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" >
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Naslov" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Title}" Padding="10 7 20 4" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Jezik" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Language}" Padding="10 0 20 0"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Tip koricenja" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding BookCoverType}" Padding="10 0 20 0"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="ISBN" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ISBN}" Padding="10 0 20 0"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="UDK" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding UDK}" Padding="10 0 20 0"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button 
+                Grid.Column="0"
+                Margin="100 20 10 10"
+                Padding="7"
+                Content="Dodaj novu knjigu"
+                Background="#fff"
+                Command="{Binding OpenAddBookTitleCommand}"/>
+            <Button 
+                Grid.Column="1"
+                Margin="170 20 10 10"
+                Padding="7"
+                Content="Dodaj primerak"
+                Background="#fff"
+                Command="{Binding OpenAddBookCopyCommand}"/>
+            <Button 
+                Grid.Column="2"
+                Margin="180 20 10 10"
+                Padding="7"
+                Content="Izadji"
+                Background="#fff"
+                Command="{Binding CloseCommand}"/>
+        </Grid>
+    </Grid>
+</Window>

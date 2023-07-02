@@ -1,7 +1,9 @@
 ﻿using Biblioteka.Command;
 using Biblioteka.Service;
 using Biblioteka.View.Dialog;
+using Biblioteka.View.Table;
 using Biblioteka.ViewModel.Dialog;
+using Biblioteka.ViewModel.Table;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +30,9 @@ namespace Biblioteka.ViewModel
 
         public void OpenBooks()
         {
-            var addingBookTitleTableView = new AddingBookTitleTableView();
-            addingBookTitleTableView.DataContext = new AddingBookTitleTableViewModel(addingBookTitleTableView, _bookService); ;
-            addingBookTitleTableView.ShowDialog();
+            var bookTableView = new BookTableView();
+            bookTableView.DataContext = new BookTableViewModel(bookTableView, _bookService);
+            bookTableView.ShowDialog();
         }
     }
 }
