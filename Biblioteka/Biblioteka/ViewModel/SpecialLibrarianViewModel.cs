@@ -1,5 +1,7 @@
 ﻿using Biblioteka.Command;
+using Biblioteka.Service;
 using Biblioteka.View.Dialog;
+using Biblioteka.ViewModel.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,10 @@ namespace Biblioteka.ViewModel
     public class SpecialLibrarianViewModel : ViewModelBase
     {
         public ICommand OpenBooksCommand { get; }
-        public SpecialLibrarianViewModel()
+        private IBookService _bookService;
+        public SpecialLibrarianViewModel(IBookService bookService)
         {
+            _bookService = bookService;
             OpenBooksCommand = new RelayCommand(OpenBooks, CanClick);
         }
 
@@ -25,7 +29,7 @@ namespace Biblioteka.ViewModel
         public void OpenBooks()
         {
             var addingBookTitleTableView = new AddingBookTitleTableView();
-            //patientAppointments.DataContext = new PatientAppointmentTableViewModel(_patient, _schedulingService, _appointmentService, _doctorScheduleService, _patientService, _doctorService);
+            addingBookTitleTableView.DataContext = new AddingBookTitleTableViewModel(addingBookTitleTableView, _bookService); ;
             addingBookTitleTableView.ShowDialog();
         }
     }

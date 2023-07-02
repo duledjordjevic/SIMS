@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Biblioteka.View.Dialog"
         mc:Ignorable="d"
-        Title="AddingBookView" Height="850" Width="800">
+        Title="AddingBookView" Height="850" Width="850">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -122,7 +122,7 @@
                 Text="Tip koricenja: "
                 VerticalAlignment="Center"
                 />
-            <ComboBox Width="150" Height="20" Grid.Column="1" Margin="10,0,10,0" ItemsSource="{Binding BookCoverType}" SelectedItem="{Binding SelectedBookCoverType}"/>
+            <ComboBox Width="150" Height="20" Grid.Column="1" Margin="10,0,10,0" ItemsSource="{Binding BookCoverTypes}" SelectedItem="{Binding SelectedBookCoverType}"/>
 
         </Grid>
 
@@ -144,7 +144,7 @@
                 />
 
             <TextBox Grid.Column="1" 
-                Text="{Binding Isbn, UpdateSourceTrigger=PropertyChanged}"  
+                Text="{Binding ISBN, UpdateSourceTrigger=PropertyChanged}"  
                 Margin="10"
                 Width="150"/>
 
@@ -157,7 +157,7 @@
                 />
 
             <TextBox Grid.Column="3" 
-                Text="{Binding Udk, UpdateSourceTrigger=PropertyChanged}"  
+                Text="{Binding UDK, UpdateSourceTrigger=PropertyChanged}"  
                 Margin="10"
                 Width="150"/>
 
@@ -170,7 +170,7 @@
                 />
 
             <TextBox Grid.Column="5" 
-                Text="{Binding Udk, UpdateSourceTrigger=PropertyChanged}"  
+                Text="{Binding PublicationYear, UpdateSourceTrigger=PropertyChanged}"  
                 Margin="10"
                 Width="150"/>
         </Grid>
@@ -287,8 +287,8 @@
 
         <ListView Grid.Row="6" Margin="40 15 20 0" 
                   HorizontalAlignment ="Left"
-                  ItemsSource="{Binding Doctors}"
-                  SelectedItem="{Binding SelectedDoctor}"
+                  ItemsSource="{Binding Publishers}"
+                  SelectedItem="{Binding SelectedPublisher}"
                   
                   SelectionMode="Single" RenderTransformOrigin="0.51,0.6">
             <ListView.ItemContainerStyle>

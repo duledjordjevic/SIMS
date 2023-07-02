@@ -40,6 +40,24 @@ namespace Biblioteka.Configuration
             builder.RegisterType<SerializerJSON<Payment>>().As<ISerializer<Payment>>();
             builder.RegisterType<ResourceConfigurationJSON<Payment>>().As<IResourceConfiguration<Payment>>();
 
+
+            builder.RegisterType<AuthorRepository>().As<IAuthorRepository>();
+            builder.RegisterType<CRUDRepository<Author>>().As<ICRUDRepository<Author>>();
+            builder.RegisterType<SerializerJSON<Author>>().As<ISerializer<Author>>();
+            builder.RegisterType<ResourceConfigurationJSON<Author>>().As<IResourceConfiguration<Author>>();
+
+            builder.RegisterType<PublisherRepository>().As<IPublisherRepository>();
+            builder.RegisterType<CRUDRepository<Publisher>>().As<ICRUDRepository<Publisher>>();
+            builder.RegisterType<SerializerJSON<Publisher>>().As<ISerializer<Publisher>>();
+            builder.RegisterType<ResourceConfigurationJSON<Publisher>>().As<IResourceConfiguration<Publisher>>();
+
+            builder.RegisterType<BookTitleRepository>().As<IBookTitleRepository>();
+            builder.RegisterType<CRUDRepository<BookTitle>>().As<ICRUDRepository<BookTitle>>();
+            builder.RegisterType<SerializerJSON<BookTitle>>().As<ISerializer<BookTitle>>();
+            builder.RegisterType<ResourceConfigurationJSON<BookTitle>>().As<IResourceConfiguration<BookTitle>>();
+
+            builder.RegisterType<BookService>().As<IBookService>();
+
             return builder.Build();
         }
     }

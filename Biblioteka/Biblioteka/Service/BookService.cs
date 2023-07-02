@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteka.Service
 {
-    public class BookService
+    public class BookService : IBookService
     {
         private IBookTitleRepository _bookTitleRepository;
         private IAuthorRepository _authorRepository;
@@ -45,6 +45,16 @@ namespace Biblioteka.Service
         public bool ExistOfPublisher(string name, string headOffice)
         {
             return _publisherRepository.GetAll().Values.Any(publisher => publisher.Name == name && publisher.HeadOffice == headOffice);
+        }
+
+        public Dictionary<int, Author> GetAllAuthors()
+        {
+            return _authorRepository.GetAll();
+        }
+
+        public Dictionary<int, Publisher> GetAllPublishers()
+        {
+            return _publisherRepository.GetAll();
         }
     }
 }

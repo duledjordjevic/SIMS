@@ -15,11 +15,13 @@ namespace Biblioteka.Service
         private readonly IUserAccountService _userAccountService;
         private readonly IMemberService _memberService;
         private readonly IPaymentService _paymentService;
-        public LoginService(IUserAccountService userAccountService, IMemberService memberService, IPaymentService paymentService) 
+        private readonly IBookService _bookService;
+        public LoginService(IUserAccountService userAccountService, IMemberService memberService, IPaymentService paymentService, IBookService bookService) 
         {
             _userAccountService = userAccountService;
             _memberService = memberService;
             _paymentService = paymentService;
+            _bookService = bookService;
         }
         public void Login(string email, string password, MainViewModel mainViewModel)
         {
@@ -37,7 +39,7 @@ namespace Biblioteka.Service
                     }
                     else if (account.AccountType == Enums.AccountType.SPECIAL_LIBRARIAN)
                     {
-                        mainViewModel.CurrentViewModel = new SpecialLibrarianViewModel();
+                        mainViewModel.CurrentViewModel = new SpecialLibrarianViewModel(_bookService);
                     }
                     else
                     {

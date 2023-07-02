@@ -13,6 +13,9 @@ namespace Biblioteka.Configuration
         private string UserAccountJSON = @"..\..\..\Data\userAccount.json";
         private string MemberJSON = @"..\..\..\Data\member.json";
         private string PaymentJSON = @"..\..\..\Data\payment.json";
+        private string BookJSON = @"..\..\..\Data\book.json";
+        private string AuthorJSON = @"..\..\..\Data\author.json";
+        private string PublisherJSON = @"..\..\..\Data\publisher.json";
         public string GetResourcePath()
         {
             return typeof(T).Name switch
@@ -20,6 +23,9 @@ namespace Biblioteka.Configuration
                 nameof(UserAccount) => UserAccountJSON,
                 nameof(Member) => MemberJSON,
                 nameof(Payment) => PaymentJSON,
+                nameof(BookTitle) => BookJSON,
+                nameof(Author) => AuthorJSON,
+                nameof(Publisher) => PublisherJSON,
                 _ => string.Empty,
             };
         }
