@@ -20,12 +20,12 @@ namespace Biblioteka.Model
         public string ISBN { get; set; }
         public string UDK { get; set; } 
         public int PublicationYear { get; set; }
-        public List<Author> Authors { get; set; }
-        public Publisher Publisher { get; set; }
+        public List<int> Authors { get; set; }
+        public int PublisherId { get; set; }
         public List<BookCopy> BookCopies { get; set; }
 
         public BookTitle() { }
-        public BookTitle(string title, string description, string language, BookCoverType bookCoverType, string format, string iSBN, string uDK, int publicationYear, List<Author> authors, Publisher publisher, List<BookCopy> bookCopies)
+        public BookTitle(string title, string description, string language, BookCoverType bookCoverType, string format, string iSBN, string uDK, int publicationYear, List<int> authors, int publisherId, List<BookCopy> bookCopies)
         {
             Title = title;
             Description = description;
@@ -36,7 +36,7 @@ namespace Biblioteka.Model
             UDK = uDK;
             PublicationYear = publicationYear;
             Authors = authors;
-            Publisher = publisher;
+            PublisherId = publisherId;
             BookCopies = bookCopies;
         }
     }
