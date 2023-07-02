@@ -1,4 +1,5 @@
 ﻿using Biblioteka.Command;
+using Biblioteka.View.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,9 @@ namespace Biblioteka.ViewModel
 
         public void OpenBooks()
         {
-            //var patientAppointments = new PatientAppoinmentsView();
+            var addingBookTitleTableView = new AddingBookTitleTableView();
             //patientAppointments.DataContext = new PatientAppointmentTableViewModel(_patient, _schedulingService, _appointmentService, _doctorScheduleService, _patientService, _doctorService);
-            //patientAppointments.ShowDialog();
+            addingBookTitleTableView.ShowDialog();
         }
     }
 }
