@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace Biblioteka.Repository
 {
-    public class BookTitleRepository : IBookTitleRepository
+    public class AuthorRepository : IAuthorRepository
     {
-        private ICRUDRepository<BookTitle> _repo;
-        public BookTitleRepository(ICRUDRepository<BookTitle> repo)
+        private ICRUDRepository<Author> _repo;
+        public AuthorRepository(ICRUDRepository<Author> repo)
         {
             _repo = repo;
         }
 
-        public void Add(BookTitle book)
+        public void Add(Author author)
         {
-            _repo.Add(book);
+            _repo.Add(author);
         }
 
-        public void Update(BookTitle book)
+        public void Update(Author author)
         {
-            _repo.Update(book);
+            _repo.Update(author);
         }
 
         public void Remove(int id)
@@ -31,12 +31,12 @@ namespace Biblioteka.Repository
             _repo.Remove(id);
         }
 
-        public BookTitle Get(int id)
+        public Author Get(int id)
         {
             return _repo.Get(id);
         }
 
-        public Dictionary<int, BookTitle> GetAll()
+        public Dictionary<int, Author> GetAll()
         {
             return _repo.GetAll();
         }
