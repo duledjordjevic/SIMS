@@ -13,6 +13,8 @@ namespace Biblioteka.Service
         bool ExistOfBook(string isbn, string udk);
         bool ExistOfPublisher(string name, string headOffice);
         Dictionary<int, Author> GetAllAuthors();
+        List<BookCopy> GetAllBookCopies(int bookTitleId);
+        Dictionary<int, BookTitle> GetAllBookTitles();
         Dictionary<int, Publisher> GetAllPublishers();
     }
 }

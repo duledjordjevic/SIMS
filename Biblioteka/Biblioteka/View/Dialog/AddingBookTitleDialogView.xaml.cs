@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 namespace Biblioteka.View.Dialog
 {
 
-    public partial class AddingBookTitleTableView : Window
+    public partial class AddingBookTitleDialogView : Window
     {
-        public AddingBookTitleTableView()
+        public AddingBookTitleDialogView()
         {
             InitializeComponent();
         }

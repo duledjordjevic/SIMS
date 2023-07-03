@@ -63,6 +63,14 @@ namespace Biblioteka.Service
             return _bookTitleRepository.GetAll().Values.Any(book => book.ISBN == isbn && book.UDK == udk);
         }
 
+        public Dictionary<int, BookTitle> GetAllBookTitles()
+        {
+            return _bookTitleRepository.GetAll();
+        }
 
+        public List<BookCopy> GetAllBookCopies(int bookTitleId)
+        {
+            return _bookTitleRepository.GetAll().Values.First(bookTitle => bookTitle.Id == bookTitleId).BookCopies;
+        }
     }
 }

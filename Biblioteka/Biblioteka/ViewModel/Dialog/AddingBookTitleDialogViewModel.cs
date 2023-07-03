@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace Biblioteka.ViewModel.Dialog
 {
-    public class AddingBookTitleTableViewModel : ViewModelBase
+    public class AddingBookTitleDialogViewModel : ViewModelBase
     {
 		private string _title;
 		public string Title
@@ -218,7 +218,7 @@ namespace Biblioteka.ViewModel.Dialog
 		public ICommand AddBookCommand { get; }
         public ICommand CloseCommand { get; }
 		private IBookService _bookService;
-        public AddingBookTitleTableViewModel(Window window, IBookService bookService)
+        public AddingBookTitleDialogViewModel(Window window, IBookService bookService)
         {
 			_bookService = bookService;
 			Authors = new ObservableCollection<AuthorViewModel>();

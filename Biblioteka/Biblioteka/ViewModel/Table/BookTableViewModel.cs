@@ -50,15 +50,37 @@ namespace Biblioteka.ViewModel.Table
         public BookTableViewModel(Window window, IBookService bookService)
         {
 			_bookService = bookService;
+			BookTitles = new ObservableCollection<BookTitle>();
+			LoadBooks();
             OpenAddBookTitleCommand = new RelayCommand(OpenAddBookTitle);
+			OpenAddBookCopyCommand = new RelayCommand(OpenAddBookCopy, CanOpenAddBookCopy);
             CloseCommand = new CloseCommand(window);
         }
 
 		public void OpenAddBookTitle()
 		{
-			var addingBookTitleTableView = new AddingBookTitleTableView();
-			addingBookTitleTableView.DataContext = new AddingBookTitleTableViewModel(addingBookTitleTableView, _bookService); ;
+			var addingBookTitleTableView = new AddingBookTitleDialogView();
+			addingBookTitleTableView.DataContext = new AddingBookTitleDialogViewModel(addingBookTitleTableView, _bookService); ;
 			addingBookTitleTableView.ShowDialog();
+		}
+
+		public void LoadBooks()
+		{
+			BookTitles.Clear();
+			foreach(var book in _bookService.GetAllBookTitles().Values)
+			{
+				BookTitles.Add(book);
+			}
+		}
+
+		public bool CanOpenAddBookCopy()
+		{
+			return SelectedBookTitle is not null;
+		}
+
+		public void OpenAddBookCopy()
+		{
+
 		}
     }
 }
