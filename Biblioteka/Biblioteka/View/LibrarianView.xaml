@@ -23,13 +23,24 @@
         </Grid>
         <Grid Grid.Row="1" Margin="5 25 5 0">
             <Button 
-                Width="250"
+              Width="250"
                 Margin="5 10 5 10"
                 Padding="7"
                 Content="Clanovi"
                 FontSize="22"
                 Background="#fff"
                 Command="{Binding OpenMembersCommand}"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="5 25 5 0">
+            <Button 
+              Width="250"
+                Margin="5 10 5 10"
+                Padding="7"
+                Content="Pozajmice"
+                FontSize="22"
+                Background="#fff"
+                Command="{Binding OpenBorrowingCommand}"/>
         </Grid>
 
     </Grid>

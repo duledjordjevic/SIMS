@@ -152,8 +152,6 @@
                 Background="#fff"
                 Command="{Binding AddBorrowingCommand}"/>
            
-            
-
             <Button 
                 Grid.Column="5"
                 Margin="80 5 5 5"
