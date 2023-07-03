@@ -16,6 +16,7 @@ namespace Biblioteka.Configuration
         private string BookJSON = @"..\..\..\Data\book.json";
         private string AuthorJSON = @"..\..\..\Data\author.json";
         private string PublisherJSON = @"..\..\..\Data\publisher.json";
+        private string BorrowingJSON = @"..\..\..\Data\borrowing.json";
         public string GetResourcePath()
         {
             return typeof(T).Name switch
@@ -26,6 +27,7 @@ namespace Biblioteka.Configuration
                 nameof(BookTitle) => BookJSON,
                 nameof(Author) => AuthorJSON,
                 nameof(Publisher) => PublisherJSON,
+                nameof(Borrowing) => BorrowingJSON,
                 _ => string.Empty,
             };
         }

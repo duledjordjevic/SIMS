@@ -20,7 +20,8 @@ namespace Biblioteka.ViewModel
         private IUserAccountService _userAccountService;
         private IPaymentService _paymentService;
         private IBookService _bookService;
-        public LibrarianViewModel(IMemberService memberService, IUserAccountService userAccountService, IPaymentService paymentService, IBookService bookService)
+        private IBorrowingService _borrowingService;
+        public LibrarianViewModel(IMemberService memberService, IUserAccountService userAccountService, IPaymentService paymentService, IBookService bookService, IBorrowingService borrowingService)
         {
             _memberService = memberService;
             _userAccountService = userAccountService;
@@ -28,6 +29,7 @@ namespace Biblioteka.ViewModel
             OpenBorrowingCommand = new RelayCommand(OpenBorrowing);
             _paymentService = paymentService;
             _bookService = bookService;
+            _borrowingService = borrowingService;
         }
 
         public void OpenMembers()
@@ -40,7 +42,7 @@ namespace Biblioteka.ViewModel
         public void OpenBorrowing()
         {
             var borrowingTableView = new BorrowingTableView();
-            borrowingTableView.DataContext = new BorrowingTableViewModel(borrowingTableView, _bookService, _memberService);
+            borrowingTableView.DataContext = new BorrowingTableViewModel(borrowingTableView, _bookService, _memberService, _borrowingService);
             borrowingTableView.ShowDialog();
         }
 

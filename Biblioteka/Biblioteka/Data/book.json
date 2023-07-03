@@ -22,7 +22,7 @@
       {
         "InventoryNumber": "RK2",
         "PurchasePrice": 500.0,
-        "BookCopyStatus": 0
+        "BookCopyStatus": 1
       }
     ]
   },
