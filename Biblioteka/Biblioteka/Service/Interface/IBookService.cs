@@ -8,9 +8,11 @@ namespace Biblioteka.Service
     {
         void AddAuthor(string name, string lastName);
         void AddBook(string title, string description, string language, BookCoverType bookCoverType, string format, string isbn, string udk, int publicationYear, List<int> authors, int publisherId, List<BookCopy> bookCopies);
+        void AddBookCopy(string inventoryNumber, double purchasePrice, int bookTitleId);
         void AddPublisher(string name, string headOffice);
         bool ExistOfAuthor(string name, string lastName);
         bool ExistOfBook(string isbn, string udk);
+        bool ExistOfBookCopy(string inventoryNumber, int bookTitleId);
         bool ExistOfPublisher(string name, string headOffice);
         Dictionary<int, Author> GetAllAuthors();
         List<BookCopy> GetAllBookCopies(int bookTitleId);

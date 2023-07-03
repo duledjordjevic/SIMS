@@ -77,9 +77,9 @@
                 Grid.Column="0"
                 Margin="50 30 10 10"
                 Padding="7"
-                Content="Dodaj knjigu"
+                Content="Dodaj primerak"
                 Background="#fff"
-                Command="{Binding AddBookCommand}"/>
+                Command="{Binding AddBookCopyCommand}"/>
             <Button 
                 Grid.Column="2"
                 Margin="100 30 10 10"

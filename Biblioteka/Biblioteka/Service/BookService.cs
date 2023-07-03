@@ -72,5 +72,22 @@ namespace Biblioteka.Service
         {
             return _bookTitleRepository.GetAll().Values.First(bookTitle => bookTitle.Id == bookTitleId).BookCopies;
         }
+
+        public void AddBookCopy(string inventoryNumber, double purchasePrice, int bookTitleId)
+        {
+            var bookCopy = new BookCopy(inventoryNumber, purchasePrice, BookCopyStatus.AVAILABLE);
+            var bookTitle = _bookTitleRepository.Get(bookTitleId);
+
+            if (bookTitle.BookCopies is  null) bookTitle.BookCopies = new List<BookCopy>();
+
+            bookTitle.BookCopies.Add(bookCopy);
+            _bookTitleRepository.Update(bookTitle);
+        }
+
+        public bool ExistOfBookCopy(string inventoryNumber, int bookTitleId)
+        {
+            var bookTitle = _bookTitleRepository.Get(bookTitleId);
+            return bookTitle.BookCopies.Any(copy => copy.InventoryNumber == inventoryNumber);
+        }
     }
 }
