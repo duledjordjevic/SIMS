@@ -15,18 +15,16 @@ namespace Biblioteka.Model
         public bool IsProlonged { get; set; }
         public bool IsFinished { get; set; }
         public int MemberId { get; set; }
-        public int BookCopyId { get; set; }
+        public string BookCopyInventoryNumber { get; set; }
 
         public Borrowing() {}
 
-        public Borrowing(DateTime start, DateTime end, bool isProlonged, bool isFinished, int memberId, int bookCopyId)
+        public Borrowing(DateTime start, DateTime end, int memberId, string bookCopyInventoryNumber)
         {
             Start = start;
             End = end;
-            IsProlonged = isProlonged;
-            IsFinished = isFinished;
             MemberId = memberId;
-            BookCopyId = bookCopyId;
+            BookCopyInventoryNumber = bookCopyInventoryNumber;
         }
     }
 }

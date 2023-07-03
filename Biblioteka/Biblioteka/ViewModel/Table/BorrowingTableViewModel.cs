@@ -1,4 +1,5 @@
 ﻿using Biblioteka.Command;
+using Biblioteka.Enums;
 using Biblioteka.Model;
 using Biblioteka.Service;
 using Biblioteka.ViewModel.Structures;
@@ -97,12 +98,15 @@ namespace Biblioteka.ViewModel.Table
 
 		private IBookService _bookService;
 		private IMemberService _memberService;
-		public ICommand AddBorrowingCommand { get; }
+		private IBorrowingService _borrowingService;
+
+        public ICommand AddBorrowingCommand { get; }
         public ICommand CloseCommand { get; }
-		public BorrowingTableViewModel(Window window, IBookService bookService, IMemberService memberService)
+		public BorrowingTableViewModel(Window window, IBookService bookService, IMemberService memberService, IBorrowingService borrowingService)
 		{
 			_bookService = bookService;
 			_memberService = memberService;
+			_borrowingService = borrowingService;
 			Members = new ObservableCollection<Member>();
 			Books = new ObservableCollection<BookViewModel>();
 			LoadMembers();
@@ -127,7 +131,19 @@ namespace Biblioteka.ViewModel.Table
 		}
 		public void AddBorrowing()
 		{
-
+			if (!_borrowingService.HasMemberBorrowing(SelectedMember.Id))
+			{
+				var bookCopy = SelectedBook.BookCopy;
+				_borrowingService.Add(SelectedMember.Id, bookCopy.InventoryNumber);
+				bookCopy.BookCopyStatus = BookCopyStatus.BORROWED;
+				_bookService.UpdateBookCopy(bookCopy, SelectedBook.BookTitle.Id);
+                MessageBox.Show("Uspesno ste napravili pozajmicu");
+				LoadBooks();
+			}
+			else
+			{
+				MessageBox.Show("Clan nije vratio neke pozajmice. Ne moze uzeti druge knjige");
+			}
 		}
 
 		public void LoadBooks()
@@ -142,7 +158,7 @@ namespace Biblioteka.ViewModel.Table
 					{
 						if (bookCopy.BookCopyStatus == Enums.BookCopyStatus.AVAILABLE)
 						{
-							Books.Add(new BookViewModel(bookCopy, bookTitle.Title, bookCopy.InventoryNumber, bookTitle.ISBN));
+							Books.Add(new BookViewModel(bookCopy, bookTitle, bookTitle.Title, bookCopy.InventoryNumber, bookTitle.ISBN));
 						}
 					}
 				}

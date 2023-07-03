@@ -18,5 +18,6 @@ namespace Biblioteka.Service
         List<BookCopy> GetAllBookCopies(int bookTitleId);
         Dictionary<int, BookTitle> GetAllBookTitles();
         Dictionary<int, Publisher> GetAllPublishers();
+        void UpdateBookCopy(BookCopy bookCopy, int bookTitleId);
     }
 }

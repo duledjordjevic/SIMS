@@ -13,12 +13,13 @@ namespace Biblioteka.ViewModel.Structures
 		public string Title { get; }
         public string InventoryNumber { get; }
         public string ISBN { get; }
-
+        public BookTitle BookTitle { get; set; }
         public BookViewModel() { }
 
-        public BookViewModel(BookCopy bookCopy, string title, string inventoryNumber, string iSBN)
+        public BookViewModel(BookCopy bookCopy, BookTitle bookTitle, string title, string inventoryNumber, string iSBN)
         {
             BookCopy = bookCopy;
+            BookTitle = bookTitle;
             Title = title;
             InventoryNumber = inventoryNumber;
             ISBN = iSBN;

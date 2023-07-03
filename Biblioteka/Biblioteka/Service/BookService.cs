@@ -93,5 +93,21 @@ namespace Biblioteka.Service
             }
             return false;
         }
+
+
+        public void UpdateBookCopy(BookCopy bookCopy, int bookTitleId)
+        {
+            var bookTitle = _bookTitleRepository.Get(bookTitleId);
+            int x = 0;
+            for (int i = 0; i < bookTitle.BookCopies.Count; i++)
+            {
+                if (bookTitle.BookCopies[i].InventoryNumber == bookCopy.InventoryNumber)
+                {
+                    x = i; break;
+                }
+            }
+            bookTitle.BookCopies[x] = bookCopy;
+            _bookTitleRepository.Update(bookTitle);
+        }
     }
 }
