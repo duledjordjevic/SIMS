@@ -64,7 +64,7 @@
                         <GridViewColumn Header="JBMG" Width="140">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding JMBG}" Padding="10 0 20 0"/>
+                                    <TextBlock Text="{Binding Jmbg}" Padding="10 0 20 0"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
