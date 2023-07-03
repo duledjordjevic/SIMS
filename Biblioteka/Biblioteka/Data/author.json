@@ -4,5 +4,11 @@
     "Name": "Stevan",
     "LastName": "Sremac",
     "BookTitles": null
+  },
+  "2": {
+    "Id": 2,
+    "Name": "Lav",
+    "LastName": "Tolstoj",
+    "BookTitles": null
   }
 }

@@ -3,6 +3,7 @@ using Biblioteka.Enums;
 using Biblioteka.Model;
 using Biblioteka.Service;
 using Biblioteka.ViewModel.Structures;
+using Biblioteka.ViewModel.Table;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -218,9 +219,11 @@ namespace Biblioteka.ViewModel.Dialog
 		public ICommand AddBookCommand { get; }
         public ICommand CloseCommand { get; }
 		private IBookService _bookService;
-        public AddingBookTitleDialogViewModel(Window window, IBookService bookService)
+		private BookTableViewModel _bookTableViewModel;
+        public AddingBookTitleDialogViewModel(Window window,BookTableViewModel bookTableViewModel, IBookService bookService)
         {
 			_bookService = bookService;
+			_bookTableViewModel = bookTableViewModel;
 			Authors = new ObservableCollection<AuthorViewModel>();
 			Publishers = new ObservableCollection<Publisher>();
 			LoadAuthors();
@@ -317,7 +320,8 @@ namespace Biblioteka.ViewModel.Dialog
 				{
 					_bookService.AddBook(Title, Description, Language, SelectedBookCoverType, Format, ISBN, UDK, PublicationYear, selectedAuthors, SelectedPublisher.Id, null);
 					MessageBox.Show("Uspesno ste dodali knjigu.");
-					CloseCommand.Execute(this);
+					_bookTableViewModel.LoadBooks();
+                    CloseCommand.Execute(this);
 				}
 				else
 				{

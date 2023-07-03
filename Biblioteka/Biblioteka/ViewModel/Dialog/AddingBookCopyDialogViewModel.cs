@@ -1,5 +1,6 @@
 ﻿using Biblioteka.Command;
 using Biblioteka.Service;
+using Biblioteka.ViewModel.Table;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,10 +44,12 @@ namespace Biblioteka.ViewModel.Dialog
 		public ICommand CloseCommand { get; }
 		private IBookService _bookService;
 		private int _bookTitleId;
-        public AddingBookCopyDialogViewModel(Window window, IBookService bookService, int bookTitleId)
+		private BookCopiesTableViewModel _bookCopiesTableViewModel;
+        public AddingBookCopyDialogViewModel(Window window, BookCopiesTableViewModel bookCopiesTableViewModel, IBookService bookService, int bookTitleId)
         {
             _bookService = bookService;
 			_bookTitleId = bookTitleId;
+			_bookCopiesTableViewModel = bookCopiesTableViewModel;
 			AddBookCopyCommand = new RelayCommand(AddBookCopy, CanAddBookCopy);
 			CloseCommand = new CloseCommand(window);
         }
@@ -62,6 +65,8 @@ namespace Biblioteka.ViewModel.Dialog
 			{
 				_bookService.AddBookCopy(InventoryNumber, PurchasePrice, _bookTitleId);
 				MessageBox.Show("Uspesno ste dodali novi primerak");
+                _bookCopiesTableViewModel.LoadBookCopies();
+                CloseCommand.Execute(this);
 			}
 			else
 			{

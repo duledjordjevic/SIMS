@@ -13,6 +13,33 @@
       0
     ],
     "PublisherId": 2,
+    "BookCopies": [
+      {
+        "InventoryNumber": "RK1",
+        "PurchasePrice": 300.0,
+        "BookCopyStatus": 0
+      },
+      {
+        "InventoryNumber": "RK2",
+        "PurchasePrice": 500.0,
+        "BookCopyStatus": 0
+      }
+    ]
+  },
+  "2": {
+    "Id": 2,
+    "Title": "Ana Karenjina",
+    "Description": "asdasd",
+    "Language": "Ruski",
+    "BookCoverType": 0,
+    "Format": "A5",
+    "ISBN": "12343245asf",
+    "UDK": "sdf12312",
+    "PublicationYear": 2023,
+    "Authors": [
+      2
+    ],
+    "PublisherId": 2,
     "BookCopies": null
   }
 }

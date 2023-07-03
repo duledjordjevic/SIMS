@@ -2,6 +2,7 @@
 using Biblioteka.Model;
 using Biblioteka.Service;
 using Biblioteka.View.Dialog;
+using Biblioteka.View.Table;
 using Biblioteka.ViewModel.Dialog;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace Biblioteka.ViewModel.Table
 		public void OpenAddBookTitle()
 		{
 			var addingBookTitleTableView = new AddingBookTitleDialogView();
-			addingBookTitleTableView.DataContext = new AddingBookTitleDialogViewModel(addingBookTitleTableView, _bookService); ;
+			addingBookTitleTableView.DataContext = new AddingBookTitleDialogViewModel(addingBookTitleTableView,this, _bookService); ;
 			addingBookTitleTableView.ShowDialog();
 		}
 
@@ -80,7 +81,9 @@ namespace Biblioteka.ViewModel.Table
 
 		public void OpenAddBookCopy()
 		{
-
+			var bookCopiesTableView = new BookCopiesTableView();
+			bookCopiesTableView.DataContext = new BookCopiesTableViewModel(bookCopiesTableView, _bookService, SelectedBookTitle.Id);
+			bookCopiesTableView.ShowDialog();
 		}
     }
 }

@@ -87,7 +87,11 @@ namespace Biblioteka.Service
         public bool ExistOfBookCopy(string inventoryNumber, int bookTitleId)
         {
             var bookTitle = _bookTitleRepository.Get(bookTitleId);
-            return bookTitle.BookCopies.Any(copy => copy.InventoryNumber == inventoryNumber);
+            if(bookTitle.BookCopies is not null)
+            {
+                return bookTitle.BookCopies.Any(copy => copy.InventoryNumber == inventoryNumber);
+            }
+            return false;
         }
     }
 }
