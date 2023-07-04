@@ -95,7 +95,7 @@
                 Height="40"
                 Content="Pozajmice"
                 Background="#fff"
-                Command="{Binding AddBorrowingCommand}"/>
+                Command="{Binding OpenMemberBorrowingsCommand}"/>
 
             <Button 
                 Grid.Column="5"

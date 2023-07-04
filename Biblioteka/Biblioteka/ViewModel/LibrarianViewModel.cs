@@ -51,7 +51,7 @@ namespace Biblioteka.ViewModel
         public void OpenBookReturn()
         {
             var bookReturnView = new BookReturnView();
-            //bookReturnView.DataContext = new BookReturnViewModel();
+            bookReturnView.DataContext = new BookReturnViewModel(bookReturnView, _memberService, _bookService, _borrowingService);
             bookReturnView.ShowDialog();
         }
     }
