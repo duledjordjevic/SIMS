@@ -1,5 +1,7 @@
 ﻿using Biblioteka.Model;
+using Biblioteka.Service;
 using Biblioteka.Service.Interface;
+using Biblioteka.ViewModel.Dialog;
 using Biblioteka.ViewModel.Table;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Biblioteka.Command
 {
@@ -31,11 +34,22 @@ namespace Biblioteka.Command
         }
         public override void Execute(object? parameter)
         {
+            if (!_userAccountService.IsEmailValid(_librarianTableViewModel.Email))
+            {
+                OnExecutionCompleted(false, "Email je u losem formatu.");
+                return;
+            }
+            else if (_userAccountService.CheckUserExistanceEmail(_librarianTableViewModel.Email))
+            {
+                OnExecutionCompleted(false, "Korisnik sa ovom email adresom vec postoji");
+                return;
+            }
             var newUser = new UserAccount(_librarianTableViewModel.Email, _librarianTableViewModel.Password, _librarianTableViewModel.SelectedLibrarian);
             _userAccountService.Add(newUser);
             _librarianTableViewModel.Librarians.Add(newUser);
-            _librarianTableViewModel.Email = null;
-            _librarianTableViewModel.Password = null;
+            _librarianTableViewModel.Email = "";
+            _librarianTableViewModel.Password = "";
+            OnExecutionCompleted(true, "Uspesno ste dodali bibliotekara");
         }
         private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {

@@ -2,6 +2,7 @@
 using Biblioteka.Enums;
 using Biblioteka.Model;
 using Biblioteka.Repository;
+using Biblioteka.Service;
 using Biblioteka.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -56,7 +58,7 @@ namespace Biblioteka.ViewModel.Table
 				OnPropertyChanged(nameof(SelectedLibrarian));
 			}
 		}
-		public ICommand AddLibrarianCommand { get; }
+		public CommandBase AddLibrarianCommand { get; }
 		private ObservableCollection<UserAccount> _librarians;
 		public ObservableCollection<UserAccount> Librarians
         {
@@ -70,15 +72,41 @@ namespace Biblioteka.ViewModel.Table
 				OnPropertyChanged(nameof(Librarians));
 			}
 		}
+		private IUserAccountService _userAccountService;
 		public LibrarianTableViewModel(IUserAccountService userAccountService)
 		{
-			var librarian = userAccountService.GetAll().Select(o => o.Value).Where(g => g.AccountType == AccountType.LIBRARIAN || g.AccountType == AccountType.SPECIAL_LIBRARIAN).ToList();
-			_librarians = new ObservableCollection<UserAccount>(librarian);
-			var allTypes = Enum.GetValues(typeof(AccountType)).Cast<AccountType>().ToList();
+			_userAccountService = userAccountService;
+			_librarians = new ObservableCollection<UserAccount>();
+			LoadLibrarians();
+            var allTypes = Enum.GetValues(typeof(AccountType)).Cast<AccountType>().ToList();
 			allTypes.Remove(AccountType.ADMIN);
 			allTypes.Remove(AccountType.MEMBER);
             LibrarianTypes = new ObservableCollection<AccountType>(allTypes);
 			AddLibrarianCommand = new AddLibrarianCommand(this,userAccountService);
-		}
-	}
+            AddLibrarianCommand.ExcecutionCompleted += AddLibrarianExecutionCompleted;
+        }
+
+		public void LoadLibrarians()
+		{
+            var librarians = _userAccountService.GetAll().
+				Select(o => o.Value).Where(g => g.AccountType == AccountType.LIBRARIAN || g.AccountType == AccountType.SPECIAL_LIBRARIAN).ToList();
+			_librarians.Clear();
+            foreach(var librarian in librarians)
+			{
+				_librarians.Add(librarian);
+			}
+        }
+        private void AddLibrarianExecutionCompleted(object? sender, ExecutionCompletedEventArgs e)
+        {
+            if (e.IsSuccessfull)
+            {
+                MessageBox.Show(e.Message, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                LoadLibrarians();
+            }
+            else
+            {
+                MessageBox.Show(e.Message, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+    }
 }
