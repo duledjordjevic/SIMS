@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Biblioteka.ViewModel
@@ -19,12 +20,18 @@ namespace Biblioteka.ViewModel
         private IUserAccountService _userAccountService;
         private IPaymentService _paymentService;
         public ICommand OpenPaymentReportCommand { get; }
-        public AdminViewModel(IUserAccountService userAccountService, IPaymentService paymentService)
+        public ICommand LogOutCommand { get; }
+        private MainViewModel _mainViewModel;
+        private ILoginService _loginService;
+        public AdminViewModel(IUserAccountService userAccountService, IPaymentService paymentService, MainViewModel mainViewModel, ILoginService loginService)
         {
+            _mainViewModel = mainViewModel;
+            _loginService = loginService;
             _userAccountService = userAccountService;
             _paymentService = paymentService;
             OpenAddLibrarianCommand = new RelayCommand(OpenAddLibrarian, CanClick);
             OpenPaymentReportCommand = new RelayCommand(OpenPaymentReport, CanClick);
+            LogOutCommand = new RelayCommand(LogOut);
         }
 
         public bool CanClick()
@@ -44,6 +51,12 @@ namespace Biblioteka.ViewModel
             var paymentReportView = new PaymentReportView();
             paymentReportView.DataContext = new PaymentReportViewModel(paymentReportView, _paymentService);
             paymentReportView.Show();
+        }
+
+        public void LogOut()
+        {
+            MessageBox.Show("Uspesno ste se izlogovali");
+            _mainViewModel.CurrentViewModel = new LoginViewModel(_mainViewModel, _loginService);
         }
     }
 }

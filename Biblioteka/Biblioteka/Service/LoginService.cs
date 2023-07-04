@@ -35,27 +35,24 @@ namespace Biblioteka.Service
                 {
                     if (account.AccountType == Enums.AccountType.ADMIN)
                     {
-                        mainViewModel.CurrentViewModel = new AdminViewModel(_userAccountService, _paymentService);
+                        mainViewModel.CurrentViewModel = new AdminViewModel(_userAccountService, _paymentService, mainViewModel, this);
                     }
                     else if (account.AccountType == Enums.AccountType.LIBRARIAN)
                     {
-                        mainViewModel.CurrentViewModel = new LibrarianViewModel(_memberService, _userAccountService, _paymentService, _bookService, _borrowingService, _returnBookService);
+                        mainViewModel.CurrentViewModel = new LibrarianViewModel(_memberService, _userAccountService, _paymentService, _bookService, _borrowingService, _returnBookService, mainViewModel, this);
                     }
                     else if (account.AccountType == Enums.AccountType.SPECIAL_LIBRARIAN)
                     {
-                        mainViewModel.CurrentViewModel = new SpecialLibrarianViewModel(_bookService);
+                        mainViewModel.CurrentViewModel = new SpecialLibrarianViewModel(_bookService, mainViewModel, this);
                     }
                     else
                     {
                         mainViewModel.CurrentViewModel = new MemberViewModel();
-                        MessageBox.Show(_memberService.GetByAccountId(account.Id).Adress.City);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Lose uneti podaci");
+                    return;
                 }
             }
+            MessageBox.Show("Lose uneti podaci");
         }
 
         //private bool IsValidPassword(Person? user, string password)

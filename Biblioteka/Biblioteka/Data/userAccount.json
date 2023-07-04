@@ -3,6 +3,12 @@
     "Id": 1,
     "Email": "dusan@gmail.com",
     "Password": "123",
+    "AccountType": 2
+  },
+  "2": {
+    "Id": 2,
+    "Email": "nikola@gmail.com",
+    "Password": "123",
     "AccountType": 0
   }
 }

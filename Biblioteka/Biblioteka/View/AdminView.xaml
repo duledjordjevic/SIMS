@@ -11,7 +11,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -43,5 +43,15 @@
                 Command="{Binding OpenPaymentReportCommand}"/>
         </Grid>
 
+        <Grid Grid.Row="4" Margin="5 25 5 0">
+            <Button 
+                Width="250"
+                Margin="5 10 5 10"
+                Padding="7"
+                Content="Odjavi se"
+                FontSize="22"
+                Background="#fff"
+                Command="{Binding LogOutCommand}"/>
+        </Grid>
     </Grid>
 </UserControl>
