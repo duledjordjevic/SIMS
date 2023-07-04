@@ -10,5 +10,17 @@
     "Email": "nikola@gmail.com",
     "Password": "123",
     "AccountType": 0
+  },
+  "3": {
+    "Id": 3,
+    "Email": "maric@gmail.com",
+    "Password": "123",
+    "AccountType": 2
+  },
+  "4": {
+    "Id": 4,
+    "Email": "marko@hotmail.com",
+    "Password": "1234",
+    "AccountType": 1
   }
 }
