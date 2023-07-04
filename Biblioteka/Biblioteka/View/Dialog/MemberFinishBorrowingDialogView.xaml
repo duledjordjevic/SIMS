@@ -1,0 +1,137 @@
+﻿<Window x:Class="Biblioteka.View.Dialog.MemberFinishBorrowingDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteka.View.Dialog"
+        mc:Ignorable="d"
+        Title="MemberFinishBorrowingDialogView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock 
+                Grid.Column="0"
+                FontSize="30"
+                Text="Clanove pozajmice"
+                Style="{StaticResource Header}"/>
+        </Grid>
+
+        <ListView Grid.Row="1" Margin="120 15 20 0" 
+                      HorizontalAlignment ="Left"
+                      ItemsSource="{Binding Borrowings}"
+                      SelectedItem="{Binding SelectedBorrowing}"
+                  
+                      SelectionMode="Single" RenderTransformOrigin="0.51,0.6">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" >
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Datum pozajmljivanja" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Start}" Padding="10 7 20 4" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Datum isteka" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding End}" Padding="10 7 20 4" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Produzena" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding IsProlonged}" Padding="10 0 20 0"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Naslov" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding IsProlonged}" Padding="10 0 20 0"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock 
+                Grid.Column="0"
+                FontSize="18"
+                Margin="50 0 0 0"
+                Text="Pretraga: "
+                VerticalAlignment="Center"
+                />
+            <TextBox Grid.Column="1" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Width="120" Margin="5 18 10 18"/>
+
+
+
+            <Button 
+                Grid.Column="4"
+                Margin="20 10 0 10"
+                Padding="3"
+                Height="40"
+                Content="Totalno ostecenje/Nije vratio"
+                Background="#fff"
+                Command="{Binding TotalBookDamageCommand}"/>
+
+            <Button 
+                Grid.Column="5"
+                Margin="20 10 0 10"
+                Padding="3"
+                Height="40"
+                Content="Ostecenje"
+                Background="#fff"
+                Command="{Binding BookDamageCommand}"/>
+
+            <Button 
+                Grid.Column="6"
+                Margin="20 10 0 10"
+                Padding="3"
+                Height="40"
+                Content="Ispravno vracanje"
+                Background="#fff"
+                Command="{Binding NoDamageCommand}"/>
+
+            <Button 
+                Grid.Column="7"
+                Margin="80 5 5 5"
+                Padding="10"
+                Height="40"
+                Content="Izadji"
+                Background="#fff"
+                Command="{Binding CloseCommand}"/>
+        </Grid>
+    </Grid>
+</Window>
