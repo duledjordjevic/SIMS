@@ -31,6 +31,17 @@
                 Background="#fff"
                 Command="{Binding OpenAddLibrarianCommand}"/>
         </Grid>
-        
+
+        <Grid Grid.Row="2" Margin="5 25 5 0">
+            <Button 
+                Width="250"
+                Margin="5 10 5 10"
+                Padding="7"
+                Content="Izvestaj naplata"
+                FontSize="22"
+                Background="#fff"
+                Command="{Binding OpenPaymentReportCommand}"/>
+        </Grid>
+
     </Grid>
 </UserControl>
