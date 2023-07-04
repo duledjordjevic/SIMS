@@ -16,6 +16,7 @@ namespace Biblioteka.ViewModel
     {
         public ICommand OpenMembersCommand { get; }
         public ICommand OpenBorrowingCommand { get; }
+        public ICommand OpenBookReturnCommand { get; }
         private IMemberService _memberService;
         private IUserAccountService _userAccountService;
         private IPaymentService _paymentService;
@@ -27,6 +28,7 @@ namespace Biblioteka.ViewModel
             _userAccountService = userAccountService;
             OpenMembersCommand = new RelayCommand(OpenMembers);
             OpenBorrowingCommand = new RelayCommand(OpenBorrowing);
+            OpenBookReturnCommand = new RelayCommand(OpenBookReturn);
             _paymentService = paymentService;
             _bookService = bookService;
             _borrowingService = borrowingService;
@@ -46,5 +48,11 @@ namespace Biblioteka.ViewModel
             borrowingTableView.ShowDialog();
         }
 
+        public void OpenBookReturn()
+        {
+            var bookReturnView = new BookReturnView();
+            //bookReturnView.DataContext = new BookReturnViewModel();
+            bookReturnView.ShowDialog();
+        }
     }
 }

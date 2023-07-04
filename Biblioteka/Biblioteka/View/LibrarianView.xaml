@@ -43,5 +43,16 @@
                 Command="{Binding OpenBorrowingCommand}"/>
         </Grid>
 
+        <Grid Grid.Row="3" Margin="5 25 5 0">
+            <Button 
+              Width="250"
+                Margin="5 10 5 10"
+                Padding="7"
+                Content="Vracanje knjige"
+                FontSize="22"
+                Background="#fff"
+                Command="{Binding OpenBookReturnCommand}"/>
+        </Grid>
+        
     </Grid>
 </UserControl>

@@ -1,0 +1,110 @@
+﻿<Window x:Class="Biblioteka.View.Table.BookReturnView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Biblioteka.View.Table"
+        mc:Ignorable="d"
+        Title="BookReturnView" Height="450" Width="510">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock 
+                Grid.Column="0"
+                FontSize="30"
+                Text="Vracanje knjige"
+                Style="{StaticResource Header}"/>
+        </Grid>
+
+        <ListView Grid.Row="1" Margin="40 15 20 0" 
+                      HorizontalAlignment ="Left"
+                      ItemsSource="{Binding Members}"
+                      SelectedItem="{Binding SelectedMember}"
+                  
+                      SelectionMode="Single" RenderTransformOrigin="0.51,0.6">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem" >
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Ime" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding Name}" Padding="10 7 20 4" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Prezime" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding LastName}" Padding="10 7 20 4" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="JBMG" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Jmbg}" Padding="10 0 20 0"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock 
+                Grid.Column="0"
+                FontSize="18"
+                Margin="50 0 0 0"
+                Text="Pretraga: "
+                VerticalAlignment="Center"
+                />
+            <TextBox Grid.Column="1" Text="{Binding SearchMembers, UpdateSourceTrigger=PropertyChanged}" Width="120" Margin="5 18 10 18"/>
+
+
+
+            <Button 
+                Grid.Column="4"
+                Margin="20 10 0 10"
+                Padding="3"
+                Height="40"
+                Content="Pozajmice"
+                Background="#fff"
+                Command="{Binding AddBorrowingCommand}"/>
+
+            <Button 
+                Grid.Column="5"
+                Margin="80 5 5 5"
+                Padding="10"
+                Height="40"
+                Content="Izadji"
+                Background="#fff"
+                Command="{Binding CloseCommand}"/>
+        </Grid>
+    </Grid>
+</Window>
