@@ -1,2 +1,16 @@
 {
+    "1":{
+        "Id": 1,
+        "PaymentType": 0,
+        "Amount": 1000.0,
+        "Date": "2023-07-04T00:00:00",
+        "MemberAccountId": 0
+    },
+    "2":{
+        "Id": 2,
+        "PaymentType": 1,
+        "Amount": 3000.0,
+        "Date": "2023-06-30T00:00:00",
+        "MemberAccountId": 0
+    }
 }

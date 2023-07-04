@@ -1,4 +1,6 @@
 ﻿using Biblioteka.Command;
+using Biblioteka.Repository;
+using Biblioteka.Service;
 using Biblioteka.Service.Interface;
 using Biblioteka.View.Table;
 using Biblioteka.ViewModel.Table;
@@ -15,10 +17,14 @@ namespace Biblioteka.ViewModel
     {
         public ICommand OpenAddLibrarianCommand { get; }
         private IUserAccountService _userAccountService;
-        public AdminViewModel(IUserAccountService userAccountService)
+        private IPaymentService _paymentService;
+        public ICommand OpenPaymentReportCommand { get; }
+        public AdminViewModel(IUserAccountService userAccountService, IPaymentService paymentService)
         {
             _userAccountService = userAccountService;
+            _paymentService = paymentService;
             OpenAddLibrarianCommand = new RelayCommand(OpenAddLibrarian, CanClick);
+            OpenPaymentReportCommand = new RelayCommand(OpenPaymentReport, CanClick);
         }
 
         public bool CanClick()
@@ -31,6 +37,13 @@ namespace Biblioteka.ViewModel
             var librarianTableView = new LibrarianTableView();
             librarianTableView.DataContext = new LibrarianTableViewModel(_userAccountService);
             librarianTableView.Show();
+        }
+        
+        public void OpenPaymentReport()
+        {
+            var paymentReportView = new PaymentReportView();
+            paymentReportView.DataContext = new PaymentReportViewModel(paymentReportView, _paymentService);
+            paymentReportView.Show();
         }
     }
 }
