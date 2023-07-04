@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteka.Service
 {
-    public class ReturnBookService 
+    public class ReturnBookService : IReturnBookService
     {
         private IBookService _bookService;
         private IBorrowingService _borrowingService;
@@ -21,7 +21,7 @@ namespace Biblioteka.Service
             _paymentService = paymentService;
         }
 
-        public double ReturnWithTotalDamage(Borrowing borrowing, BookCopy bookCopy,int bookTitleId, int memberId)
+        public double ReturnWithTotalDamage(Borrowing borrowing, BookCopy bookCopy, int bookTitleId, int memberId)
         {
             borrowing.IsFinished = true;
             _borrowingService.Update(borrowing);
@@ -40,7 +40,7 @@ namespace Biblioteka.Service
             _paymentService.Add(new Payment(PaymentType.BOOK_DAMAGE, bookCopy.PurchasePrice, DateTime.Now, memberId));
         }
 
-        public void ReturnWithNoDamage(Borrowing borrowing, BookCopy bookCopy, int bookTitleId, )
+        public void ReturnWithNoDamage(Borrowing borrowing, BookCopy bookCopy, int bookTitleId)
         {
             borrowing.IsFinished = true;
             _borrowingService.Update(borrowing);
@@ -51,7 +51,7 @@ namespace Biblioteka.Service
         public double PayForLate(Borrowing borrowing, int memberId)
         {
             double price = 0;
-            if(borrowing.End < DateTime.Now)
+            if (borrowing.End < DateTime.Now)
             {
                 price = 10 * (DateTime.Now - borrowing.End).Days;
                 _paymentService.Add(new Payment(PaymentType.LATE_FEE, price, DateTime.Now, memberId));
