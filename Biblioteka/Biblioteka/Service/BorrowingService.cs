@@ -27,5 +27,10 @@ namespace Biblioteka.Service
         {
             return _borrowingRepository.GetAll().Values.Any(borrowing => borrowing.MemberId == memberId && borrowing.IsFinished == false && borrowing.Start.Date != DateTime.Now.Date );
         }
+
+        public void Update(Borrowing borrowing)
+        {
+            _borrowingRepository.Update(borrowing);
+        }
     }
 }
