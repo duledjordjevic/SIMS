@@ -12,12 +12,14 @@ namespace Biblioteka.Service
         void AddPublisher(string name, string headOffice);
         bool ExistOfAuthor(string name, string lastName);
         bool ExistOfBook(string isbn, string udk);
-        bool ExistOfBookCopy(string inventoryNumber, int bookTitleId);
+        bool ExistOfBookCopy(string inventoryNumber);
         bool ExistOfPublisher(string name, string headOffice);
         Dictionary<int, Author> GetAllAuthors();
         List<BookCopy> GetAllBookCopies(int bookTitleId);
         Dictionary<int, BookTitle> GetAllBookTitles();
         Dictionary<int, Publisher> GetAllPublishers();
+        BookTitle? GetBookTitleByCopy(string inventoryNumber);
         void UpdateBookCopy(BookCopy bookCopy, int bookTitleId);
+        BookCopy? GetBookCopy(string inventoryNumber, BookTitle bookTitle);
     }
 }

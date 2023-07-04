@@ -84,12 +84,14 @@ namespace Biblioteka.Service
             _bookTitleRepository.Update(bookTitle);
         }
 
-        public bool ExistOfBookCopy(string inventoryNumber, int bookTitleId)
+        public bool ExistOfBookCopy(string inventoryNumber)
         {
-            var bookTitle = _bookTitleRepository.Get(bookTitleId);
-            if(bookTitle.BookCopies is not null)
+            foreach(var bookTitle in _bookTitleRepository.GetAll().Values)
             {
-                return bookTitle.BookCopies.Any(copy => copy.InventoryNumber == inventoryNumber);
+                if(bookTitle.BookCopies is not null)
+                {
+                    return bookTitle.BookCopies.Any(copy => copy.InventoryNumber == inventoryNumber);
+                }
             }
             return false;
         }
@@ -108,6 +110,33 @@ namespace Biblioteka.Service
             }
             bookTitle.BookCopies[x] = bookCopy;
             _bookTitleRepository.Update(bookTitle);
+        }
+
+        public BookTitle? GetBookTitleByCopy(string inventoryNumber)
+        {
+            foreach(var bookTitle in _bookTitleRepository.GetAll().Values)
+            {
+                if (bookTitle.BookCopies is not null)
+                {
+                    foreach(var copy in bookTitle.BookCopies)
+                    {
+                        if (copy.InventoryNumber == inventoryNumber) return bookTitle;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public BookCopy? GetBookCopy(string inventoryNumber, BookTitle bookTitle) 
+        {
+            if (bookTitle.BookCopies is not null)
+            {
+                foreach (var copy in bookTitle.BookCopies)
+                {
+                    if (copy.InventoryNumber == inventoryNumber) return copy;
+                }
+            }
+            return null;
         }
     }
 }

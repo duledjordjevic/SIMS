@@ -40,5 +40,10 @@ namespace Biblioteka.Repository
         {
             return _repo.GetAll();
         }
+
+        public List<Borrowing> GetAllNotFinished(int memberId)
+        {
+            return GetAll().Values.Where(b => b.MemberId == memberId && !b.IsFinished).ToList(); ;
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Biblioteka.ViewModel.Structures
         public DateTime End { get; set; }
         public bool IsProlonged { get; set; }
         public string Title { get; set; }
-        public BorrowingViewModel(Borrowing borrowing, BookCopy bookCopy, BookTitle bookTitle, string title) 
+        public BorrowingViewModel(Borrowing borrowing, BookCopy bookCopy, BookTitle bookTitle) 
         {
             BookTitle = bookTitle;
             Borrowing = borrowing;
@@ -24,7 +24,7 @@ namespace Biblioteka.ViewModel.Structures
             Start = Borrowing.Start;
             End = Borrowing.End;
             IsProlonged = Borrowing.IsProlonged;
-            Title = title;
+            Title = bookTitle.Title;
         }
     }
 }

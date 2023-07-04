@@ -1,6 +1,7 @@
 ﻿using Biblioteka.Command;
 using Biblioteka.Model;
 using Biblioteka.Service;
+using Biblioteka.View.Dialog;
 using Biblioteka.ViewModel.Structures;
 using System;
 using System.Collections.Generic;
@@ -60,14 +61,16 @@ namespace Biblioteka.ViewModel.Table
         private IMemberService _memberService;
         private IBookService _bookService;
         private IBorrowingService _borrowingService;
+        private IReturnBookService _returnBookService;
         public ICommand OpenMemberBorrowingsCommand { get; }
         public ICommand CloseCommand { get; }
 
-        public BookReturnViewModel(Window window, IMemberService memberService, IBookService bookService, IBorrowingService borrowingService)
+        public BookReturnViewModel(Window window, IMemberService memberService, IBookService bookService, IBorrowingService borrowingService, IReturnBookService returnBookService)
         {
             _memberService = memberService;
             _bookService = bookService;
             _borrowingService = borrowingService;
+            _returnBookService = returnBookService;
             Members = new ObservableCollection<Member>();
             LoadMembers();
             OpenMemberBorrowingsCommand = new RelayCommand(OpenMemberBorrowings, CanOpenBorrowings);
@@ -89,7 +92,9 @@ namespace Biblioteka.ViewModel.Table
         }
         public void OpenMemberBorrowings()
         {
-
+            var memberFinishBorrowingDialogView = new MemberFinishBorrowingDialogView();
+            memberFinishBorrowingDialogView.DataContext = new MemberFinishBorrowingDialogViewModel(memberFinishBorrowingDialogView, _bookService, _borrowingService, _returnBookService, SelectedMember.Id);
+            memberFinishBorrowingDialogView.ShowDialog();
         }
 
         private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)

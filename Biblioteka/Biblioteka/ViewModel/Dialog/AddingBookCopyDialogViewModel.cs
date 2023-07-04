@@ -61,7 +61,7 @@ namespace Biblioteka.ViewModel.Dialog
 
 		public void AddBookCopy()
 		{
-			if(!_bookService.ExistOfBookCopy(InventoryNumber, _bookTitleId))
+			if(!_bookService.ExistOfBookCopy(InventoryNumber))
 			{
 				_bookService.AddBookCopy(InventoryNumber, PurchasePrice, _bookTitleId);
 				MessageBox.Show("Uspesno ste dodali novi primerak");

@@ -32,5 +32,14 @@ namespace Biblioteka.Service
         {
             _borrowingRepository.Update(borrowing);
         }
+
+        public Dictionary<int, Borrowing> GetAll()
+        {
+            return _borrowingRepository.GetAll();
+        }
+        public List<Borrowing> GetAllNotFinished(int memberId)
+        {
+            return GetAll().Values.Where(b => b.MemberId == memberId && !b.IsFinished).ToList(); ;
+        }
     }
 }

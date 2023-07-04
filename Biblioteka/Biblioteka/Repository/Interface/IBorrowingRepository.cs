@@ -8,6 +8,7 @@ namespace Biblioteka.Repository
         void Add(Borrowing borrowing);
         Borrowing Get(int id);
         Dictionary<int, Borrowing> GetAll();
+        List<Borrowing> GetAllNotFinished(int memberId);
         void Remove(int id);
         void Update(Borrowing borrowing);
     }

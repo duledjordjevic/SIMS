@@ -64,6 +64,8 @@ namespace Biblioteka.Configuration
             builder.RegisterType<SerializerJSON<Borrowing>>().As<ISerializer<Borrowing>>();
             builder.RegisterType<ResourceConfigurationJSON<Borrowing>>().As<IResourceConfiguration<Borrowing>>();
 
+            builder.RegisterType<ReturnBookService>().As<IReturnBookService>();
+
             return builder.Build();
         }
     }

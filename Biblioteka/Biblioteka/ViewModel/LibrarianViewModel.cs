@@ -22,7 +22,8 @@ namespace Biblioteka.ViewModel
         private IPaymentService _paymentService;
         private IBookService _bookService;
         private IBorrowingService _borrowingService;
-        public LibrarianViewModel(IMemberService memberService, IUserAccountService userAccountService, IPaymentService paymentService, IBookService bookService, IBorrowingService borrowingService)
+        private IReturnBookService _returnBookService;
+        public LibrarianViewModel(IMemberService memberService, IUserAccountService userAccountService, IPaymentService paymentService, IBookService bookService, IBorrowingService borrowingService, IReturnBookService returnBookService)
         {
             _memberService = memberService;
             _userAccountService = userAccountService;
@@ -32,6 +33,7 @@ namespace Biblioteka.ViewModel
             _paymentService = paymentService;
             _bookService = bookService;
             _borrowingService = borrowingService;
+            _returnBookService = returnBookService;
         }
 
         public void OpenMembers()
@@ -51,7 +53,7 @@ namespace Biblioteka.ViewModel
         public void OpenBookReturn()
         {
             var bookReturnView = new BookReturnView();
-            bookReturnView.DataContext = new BookReturnViewModel(bookReturnView, _memberService, _bookService, _borrowingService);
+            bookReturnView.DataContext = new BookReturnViewModel(bookReturnView, _memberService, _bookService, _borrowingService, _returnBookService);
             bookReturnView.ShowDialog();
         }
     }
