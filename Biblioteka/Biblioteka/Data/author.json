@@ -10,5 +10,11 @@
     "Name": "Lav",
     "LastName": "Tolstoj",
     "BookTitles": null
+  },
+  "3": {
+    "Id": 3,
+    "Name": "Fjodor Mihajlovic",
+    "LastName": "Dostojevski",
+    "BookTitles": null
   }
 }

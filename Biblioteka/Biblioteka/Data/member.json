@@ -15,5 +15,56 @@
       "City": "Novi Sad",
       "PostalCode": 21000
     }
+  },
+  "2": {
+    "Id": 2,
+    "Name": "Aleksa",
+    "LastName": "Janjic",
+    "Jmbg": "14567890123",
+    "Telephone": "06530234568",
+    "MembershipType": 2,
+    "UserAccountId": 5,
+    "MemberCard": {
+      "Expiry": "2024-07-05"
+    },
+    "Adress": {
+      "Street": "Kosovska BB",
+      "City": "Sombor",
+      "PostalCode": 19000
+    }
+  },
+  "3": {
+    "Id": 3,
+    "Name": "Petar",
+    "LastName": "Petrovic",
+    "Jmbg": "1209838123",
+    "Telephone": "329048023",
+    "MembershipType": 2,
+    "UserAccountId": 6,
+    "MemberCard": {
+      "Expiry": "2024-07-05"
+    },
+    "Adress": {
+      "Street": "Cara Dusana 45",
+      "City": "Novi Sad",
+      "PostalCode": 21000
+    }
+  },
+  "4": {
+    "Id": 4,
+    "Name": "Rade",
+    "LastName": "Pejanovic",
+    "Jmbg": "15047890131",
+    "Telephone": "066820467",
+    "MembershipType": 1,
+    "UserAccountId": 7,
+    "MemberCard": {
+      "Expiry": "2024-07-05"
+    },
+    "Adress": {
+      "Street": "Preradoviceva 49",
+      "City": "Novi Sad",
+      "PostalCode": 21000
+    }
   }
 }

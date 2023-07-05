@@ -1,16 +1,37 @@
 {
-    "1":{
-        "Id": 1,
-        "PaymentType": 0,
-        "Amount": 1000.0,
-        "Date": "2023-07-04T00:00:00",
-        "MemberAccountId": 0
-    },
-    "2":{
-        "Id": 2,
-        "PaymentType": 1,
-        "Amount": 3000.0,
-        "Date": "2023-06-30T00:00:00",
-        "MemberAccountId": 0
-    }
+  "1": {
+    "Date": "2023-07-04T00:00:00",
+    "MemberAccountId": 0,
+    "Id": 1,
+    "PaymentType": 0,
+    "Amount": 1000.0
+  },
+  "2": {
+    "Date": "2023-06-30T00:00:00",
+    "MemberAccountId": 0,
+    "Id": 2,
+    "PaymentType": 1,
+    "Amount": 3000.0
+  },
+  "3": {
+    "Date": "2023-07-05T08:38:25.5685144+02:00",
+    "MemberAccountId": 5,
+    "Id": 3,
+    "PaymentType": 0,
+    "Amount": 500.0
+  },
+  "4": {
+    "Date": "2023-07-05T08:39:20.333727+02:00",
+    "MemberAccountId": 6,
+    "Id": 4,
+    "PaymentType": 0,
+    "Amount": 500.0
+  },
+  "5": {
+    "Date": "2023-07-05T08:40:45.2480593+02:00",
+    "MemberAccountId": 7,
+    "Id": 5,
+    "PaymentType": 0,
+    "Amount": 500.0
+  }
 }

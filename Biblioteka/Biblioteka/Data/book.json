@@ -23,6 +23,11 @@
         "InventoryNumber": "RK2",
         "PurchasePrice": 500.0,
         "BookCopyStatus": 1
+      },
+      {
+        "InventoryNumber": "RK3",
+        "PurchasePrice": 700.0,
+        "BookCopyStatus": 0
       }
     ]
   },
@@ -40,6 +45,54 @@
       2
     ],
     "PublisherId": 2,
-    "BookCopies": null
+    "BookCopies": [
+      {
+        "InventoryNumber": "RK5",
+        "PurchasePrice": 500.0,
+        "BookCopyStatus": 0
+      },
+      {
+        "InventoryNumber": "RK6",
+        "PurchasePrice": 700.0,
+        "BookCopyStatus": 0
+      },
+      {
+        "InventoryNumber": "RK7",
+        "PurchasePrice": 450.0,
+        "BookCopyStatus": 0
+      }
+    ]
+  },
+  "3": {
+    "Id": 3,
+    "Title": "Zlocin i kazna",
+    "Description": "asdasdasd",
+    "Language": "Srpski",
+    "BookCoverType": 0,
+    "Format": "A5",
+    "ISBN": "978-86-521-3239-3",
+    "UDK": "3123235asdd",
+    "PublicationYear": 2015,
+    "Authors": [
+      3
+    ],
+    "PublisherId": 1,
+    "BookCopies": [
+      {
+        "InventoryNumber": "FD1",
+        "PurchasePrice": 1300.0,
+        "BookCopyStatus": 0
+      },
+      {
+        "InventoryNumber": "FD2",
+        "PurchasePrice": 1300.0,
+        "BookCopyStatus": 1
+      },
+      {
+        "InventoryNumber": "FD3",
+        "PurchasePrice": 1500.0,
+        "BookCopyStatus": 0
+      }
+    ]
   }
 }

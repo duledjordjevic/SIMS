@@ -3,7 +3,7 @@
     "Id": 1,
     "Email": "dusan@gmail.com",
     "Password": "123",
-    "AccountType": 2
+    "AccountType": 3
   },
   "2": {
     "Id": 2,
@@ -22,5 +22,23 @@
     "Email": "marko@hotmail.com",
     "Password": "1234",
     "AccountType": 1
+  },
+  "5": {
+    "Id": 5,
+    "Email": "aleksa@uns.ac.rs",
+    "Password": "123",
+    "AccountType": 3
+  },
+  "6": {
+    "Id": 6,
+    "Email": "petar.petrovic@gmail.com",
+    "Password": "123",
+    "AccountType": 3
+  },
+  "7": {
+    "Id": 7,
+    "Email": "rade.pejanvic@gmail.com",
+    "Password": "123123",
+    "AccountType": 3
   }
 }

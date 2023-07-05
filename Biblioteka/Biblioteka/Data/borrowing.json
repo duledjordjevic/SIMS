@@ -7,5 +7,14 @@
     "IsFinished": false,
     "MemberId": 1,
     "BookCopyInventoryNumber": "RK2"
+  },
+  "2": {
+    "Id": 2,
+    "Start": "2023-07-05T09:06:32.5606117+02:00",
+    "End": "2023-07-19T09:06:32.5606141+02:00",
+    "IsProlonged": false,
+    "IsFinished": false,
+    "MemberId": 4,
+    "BookCopyInventoryNumber": "FD2"
   }
 }
